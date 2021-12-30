@@ -1016,162 +1016,11 @@
     
     <!-- 首页座右铭 -->
     
-  <div class="motto">
-      <h3 class="motto-title">座右铭</h3>
-      <div class="motto-content">
-        <p>
-          沉淀后我愿意做个温暖的人，有自己的喜好，有自己的原则，有自己的信仰，不急功近利，不浮夸轻薄。宠辱不惊，淡定安逸，心静如水，不忘初心，方得始终。  
-        </p> 
-      </div>
-  </div>
-
     <!-- 首页公告 -->
     
-<style>
-  .index-notice-content {
-    margin-top: 10px;
-  }
-  .warp {
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  .index-notice-content__ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-  }
-  .index-notice-content__ul li,
-  .index-notice-content__ul a {
-    display: block;
-    height: 30px;
-    line-height: 30px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 15px;
-  }
-  .index-notice-content__title {
-    flex: 1;
-    overflow: hidden;
-  }
-  .index-notice-content__title a,
-  .index-notice-content__title span {
-    overflow: hidden;
-    display: block;
-    text-overflow:ellipsis; 
-    white-space: nowrap;
-    height: 100%;
-    width: 100%;
-    color: #000;
-  }
-  .index-notice-content__title a:hover,
-  .index-notice-content__title span:hover {
-    text-decoration: underline;
-  }
-  .index-notice-content__date {
-    min-width: 80px;
-    margin-left: 5px;
-    color: #000;
-  }
-</style>
-<div class="index-notice" id="appIndexNotice">
-    <h3>
-      <i class="fas fa-bullhorn index-notice-icon"></i>公告
-    </h3>
-    <div class="index-notice-content">
-      
-      <vue-seamless-scroll
-        :data="listData"
-        :class-option="classOption"
-        class="warp"
-        style="height: 0px"
-      >
-        <ul class="index-notice-content__ul">
-          
-           
-        </ul>
-      </vue-seamless-scroll>
-    </div>
-</div>
-<script src="/js/vue-seamless-scroll/index.js"></script>
-
-<!-- 滚动插件采用 vue-seamless-scroll
-  https://chenxuan0000.github.io/vue-seamless-scroll/zh/guide/06-singleStop.html 
--->
-
-<script>
-  var seamless = JSON.parse('false');
-  seamless = seamless ? 0 : 30;
-  var listData = '' || '';
-  listData = listData.split(',');
-  var vm = new Vue({
-    el: '#appIndexNotice',
-    data: {
-      listData: listData,
-      moveNum: 2,
-      classOption: {
-        singleHeight: seamless,
-        limitMoveNum: listData.length
-      },
-    },
-    computed: {
-    },
-    mounted() {
-    },
-    methods: {
-    },
-    created() {
-      this.moveNum = parseInt(this.listData.length);
-    }
-  })
-</script>
-
-
-
     <!-- 首页文章置顶 -->
     
 
-
-<div class="topArticle reveal">
-	<h3><i class="fas fa-thumbs-o-up" aria-hidden="true"></i>Recommend Articles</h3>
-	<div class="articles">
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-	</div>
-</div>
 
 
     <div class="bg-floor" id="home-bg-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
@@ -1189,7 +1038,7 @@
             <span class="post-time">2021-12-30</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/12/30/tdapw/"></a>
+            <a class="post-title-link" href="/2021/12/30/vesta%E5%BB%BA%E6%A8%A1-%E5%BC%82%E8%B4%A8%E7%BB%93/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1203,25 +1052,24 @@
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/2021/12/30/tdapw/" style="background-size: cover; 
+            <a href="/2021/12/30/vesta%E5%BB%BA%E6%A8%A1-%E5%BC%82%E8%B4%A8%E7%BB%93/" style="background-size: cover; 
               background-position: center center;">
               <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
             </a>
           </div>
           <div class="post-content">
-            TDPW-study参考：@https://tdap-help.github.io/TDAPW/
-注意事项：td_ht=2只有TDKS轨道演化的时候提高收敛性的TDPAW是基于QE（平面波）的含时第一性原理软件一.理论  对比TDAP
-  
+            利用vesta建模关于MoS2-graphene的异质结参考：@https://www.bilibili.com/video/BV1g54y1j7nA?p=9
+1.准备：关于MoS2和graphene的vasp格式的文件MoS2的vasp文
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/12/30/tdapw/">
+          <a href="/2021/12/30/vesta%E5%BB%BA%E6%A8%A1-%E5%BC%82%E8%B4%A8%E7%BB%93/">
             <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/2021/12/30/tdapw/" style="background-size: cover; 
+        <a href="/2021/12/30/vesta%E5%BB%BA%E6%A8%A1-%E5%BC%82%E8%B4%A8%E7%BB%93/" style="background-size: cover; 
           background-position: center center;">
           <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
         </a>
@@ -1237,7 +1085,7 @@
             <span class="post-time">2021-12-30</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/12/30/%E5%90%8E%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC/"></a>
+            <a class="post-title-link" href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%94%B5%E8%8D%B7%E5%AF%86%E5%BA%A6%E5%88%86%E5%B8%83/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1251,23 +1099,25 @@
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/2021/12/30/%E5%90%8E%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC/" style="background-size: cover; 
+            <a href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%94%B5%E8%8D%B7%E5%AF%86%E5%BA%A6%E5%88%86%E5%B8%83/" style="background-size: cover; 
               background-position: center center;">
               <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
             </a>
           </div>
           <div class="post-content">
-            已知：该脚本是针对MoS2中991的k-mesh来展开的，主要K谷和K’谷刚好在第31和61个k点处，可在MoS2_scf.crystal.KP中对应查看位置坐标1.处理统计总磁矩用法：将文件x,y,z方向的磁矩存在mag-raw.txt文
+            关于计算和绘制电子电荷密度分布chdens=charge density
+计算价电子电荷密度Step1.自洽计算pw.x $name.scf.in
+Step2.pp.x计算，即将电荷密度写入三维XSF文件，具体格式：123456789101
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/12/30/%E5%90%8E%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC/">
+          <a href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%94%B5%E8%8D%B7%E5%AF%86%E5%BA%A6%E5%88%86%E5%B8%83/">
             <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/2021/12/30/%E5%90%8E%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC/" style="background-size: cover; 
+        <a href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%94%B5%E8%8D%B7%E5%AF%86%E5%BA%A6%E5%88%86%E5%B8%83/" style="background-size: cover; 
           background-position: center center;">
           <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
         </a>
@@ -1283,7 +1133,7 @@
             <span class="post-time">2021-12-30</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/12/30/constrained-magnetization/"></a>
+            <a class="post-title-link" href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%A3%81%E6%80%A7/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1297,24 +1147,24 @@
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/2021/12/30/constrained-magnetization/" style="background-size: cover; 
+            <a href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%A3%81%E6%80%A7/" style="background-size: cover; 
               background-position: center center;">
               <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
             </a>
           </div>
           <div class="post-content">
-            关于constrained-magnetization的一些问题涉及到的参数：
-1234starting_magnetization(i), i=1,ntypangle1(i) , i=1,ntypangle2(i),i=1,ntypcon
+            关于计算材料的磁性注意事项：对称性的tag：nosym（空间对称性）noinv（时间对称性）no_t_rev=.True.（关于磁性计算中旋转平移对称性操作）
+关于磁性的tag· starting_spin_angle· nspin· ls
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/12/30/constrained-magnetization/">
+          <a href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%A3%81%E6%80%A7/">
             <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/2021/12/30/constrained-magnetization/" style="background-size: cover; 
+        <a href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%A3%81%E6%80%A7/" style="background-size: cover; 
           background-position: center center;">
           <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
         </a>
@@ -1330,7 +1180,7 @@
             <span class="post-time">2021-12-30</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/12/30/k%E7%A9%BA%E9%97%B4%E7%9A%84%E7%A7%AF%E5%88%86/"></a>
+            <a class="post-title-link" href="/2021/12/30/%E8%AE%A1%E7%AE%97SOC%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1344,24 +1194,23 @@
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/2021/12/30/k%E7%A9%BA%E9%97%B4%E7%9A%84%E7%A7%AF%E5%88%86/" style="background-size: cover; 
+            <a href="/2021/12/30/%E8%AE%A1%E7%AE%97SOC%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" style="background-size: cover; 
               background-position: center center;">
               <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
             </a>
           </div>
           <div class="post-content">
-            k空间中的积分实际DFT计算中，所需要进行的工作都可以归纳为下面形式的积分值，即：它的特点是：在倒易空间中定义，并在布里渊区中对所有可能的k值进行积分诸如处理这样的积分，如
-
+            关于SOC计算的相关事项1）赝势的选择：选择带有rel的赝势2）对称性 关于对称性，有关的参数包括nosymLOGICALDefault:    .FALSE.这一参数是指对称性默认情况下是考虑了的，我们计算的时候需要打破对称性，即把选项设
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/12/30/k%E7%A9%BA%E9%97%B4%E7%9A%84%E7%A7%AF%E5%88%86/">
+          <a href="/2021/12/30/%E8%AE%A1%E7%AE%97SOC%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
             <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/2021/12/30/k%E7%A9%BA%E9%97%B4%E7%9A%84%E7%A7%AF%E5%88%86/" style="background-size: cover; 
+        <a href="/2021/12/30/%E8%AE%A1%E7%AE%97SOC%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" style="background-size: cover; 
           background-position: center center;">
           <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
         </a>
@@ -1377,7 +1226,7 @@
             <span class="post-time">2021-12-30</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/12/30/MoS2/"></a>
+            <a class="post-title-link" href="/2021/12/30/%E8%AE%A1%E7%AE%97MD-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1391,24 +1240,23 @@
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/2021/12/30/MoS2/" style="background-size: cover; 
+            <a href="/2021/12/30/%E8%AE%A1%E7%AE%97MD-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6/" style="background-size: cover; 
               background-position: center center;">
               <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
             </a>
           </div>
           <div class="post-content">
-            1.MoS2有不同的构型在Materials-Project里包括两种A-B（编号：MoS2_mp-2815）与A-A（编号：MoS2_mp-1018809）
-2.单层MoS2的设定一种方法可以加真空层，另一种方法可以直接比较数字大小删除就
+            计算分子动力学qe中分子动力学的计算一.关于设置calculation=&#39;md&#39;表示的是 分子动力学，将电子对离子的作用看成离子感受到的势，根据势能和离子出事的速度求解离子运动的牛顿方程calculation=&#39;vc
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/12/30/MoS2/">
+          <a href="/2021/12/30/%E8%AE%A1%E7%AE%97MD-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6/">
             <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/2021/12/30/MoS2/" style="background-size: cover; 
+        <a href="/2021/12/30/%E8%AE%A1%E7%AE%97MD-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6/" style="background-size: cover; 
           background-position: center center;">
           <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
         </a>
@@ -1424,7 +1272,7 @@
             <span class="post-time">2021-12-30</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/12/30/nawu/"></a>
+            <a class="post-title-link" href="/2021/12/30/%E5%85%B3%E4%BA%8EQE%E7%9A%84%E9%94%99%E8%AF%AF/"></a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1438,24 +1286,24 @@
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/2021/12/30/nawu/" style="background-size: cover; 
+            <a href="/2021/12/30/%E5%85%B3%E4%BA%8EQE%E7%9A%84%E9%94%99%E8%AF%AF/" style="background-size: cover; 
               background-position: center center;">
               <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
             </a>
           </div>
           <div class="post-content">
-            hhh![image] (https://github.com/nawu97/qe-study/blob/main/%E6%AD%A6%E5%A8%9C.jpg)
-
+            
+1.关键词错误报错A：12345678910111213141516%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/12/30/nawu/">
+          <a href="/2021/12/30/%E5%85%B3%E4%BA%8EQE%E7%9A%84%E9%94%99%E8%AF%AF/">
             <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/2021/12/30/nawu/" style="background-size: cover; 
+        <a href="/2021/12/30/%E5%85%B3%E4%BA%8EQE%E7%9A%84%E9%94%99%E8%AF%AF/" style="background-size: cover; 
           background-position: center center;">
           <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
         </a>
@@ -1471,7 +1319,7 @@
             <span class="post-time">2021-12-30</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2021/12/30/%E6%94%B6%E6%95%9B%E9%97%AE%E9%A2%98/"></a>
+            <a class="post-title-link" href="/2021/12/30/NaWu-First-Blog/">NaWu-First-Blog</a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1485,165 +1333,25 @@
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/2021/12/30/%E6%94%B6%E6%95%9B%E9%97%AE%E9%A2%98/" style="background-size: cover; 
+            <a href="/2021/12/30/NaWu-First-Blog/" style="background-size: cover; 
               background-position: center center;">
-              <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+              <img class="lazyload lazyload placeholder" src="/medias/13.jpg" class="lazyload placeholder" data-srcset="/medias/13.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
             </a>
           </div>
           <div class="post-content">
-            收敛问题在电子自洽计算和结构弛豫过程中，pw.x有时迭代到最大步数或者报错退出，这主要是因为计算不收敛，即1234End of self-consistent calculationconvergence NOT achieved afte
+            Hello everyone！This is my first blog!BY NaWu@IOP
           </div>
         </div>
         <div class="post-more">
-          <a href="/2021/12/30/%E6%94%B6%E6%95%9B%E9%97%AE%E9%A2%98/">
+          <a href="/2021/12/30/NaWu-First-Blog/">
             <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/2021/12/30/%E6%94%B6%E6%95%9B%E9%97%AE%E9%A2%98/" style="background-size: cover; 
+        <a href="/2021/12/30/NaWu-First-Blog/" style="background-size: cover; 
           background-position: center center;">
-          <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-        </a>
-      </div>
-    </article>
-  
-    
-    <article class="post reveal" style="   ">
-      <div class="post-main">
-        <div class="post-info">
-          <div class="post-time">
-            <i class="fas fa-clock" aria-hidden="true"></i>
-            <span class="post-time">2021-12-30</span>
-          </div>
-          <div class="post-title">
-            <a class="post-title-link" href="/2021/12/30/%E6%A8%A1%E5%AE%88%E6%81%92%E8%B5%9D%E5%8A%BFONCVPSP/"></a>
-          </div>
-          <div class="post-meta">
-            <div class="post-tags">
-              <!-- 文章详情页的标签 -->
-
-            </div>
-            <div class="post-categories">
-              <!-- 文章详情页的分类 -->
-
-
-            </div>
-          </div>
-          <div class="post-img-mobile">
-            <a href="/2021/12/30/%E6%A8%A1%E5%AE%88%E6%81%92%E8%B5%9D%E5%8A%BFONCVPSP/" style="background-size: cover; 
-              background-position: center center;">
-              <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-            </a>
-          </div>
-          <div class="post-content">
-            模守恒赝势ONCVPSP介绍：QE里以UPF形式的优化的模守恒赝势
-什么是ONCVPSP?对于平面波基底的计算,uspp和PAW类型的赝势应用广泛，但模守恒赝势因其简单，qe里计算常不用变换其赝函数形式常用的可参考：@https://git
-          </div>
-        </div>
-        <div class="post-more">
-          <a href="/2021/12/30/%E6%A8%A1%E5%AE%88%E6%81%92%E8%B5%9D%E5%8A%BFONCVPSP/">
-            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
-          </a>
-        </div>
-      </div>
-      <div class="post-img">
-        <a href="/2021/12/30/%E6%A8%A1%E5%AE%88%E6%81%92%E8%B5%9D%E5%8A%BFONCVPSP/" style="background-size: cover; 
-          background-position: center center;">
-          <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-        </a>
-      </div>
-    </article>
-  
-    
-    <article class="post reveal" style="flex-direction: row-reverse;   ">
-      <div class="post-main">
-        <div class="post-info">
-          <div class="post-time">
-            <i class="fas fa-clock" aria-hidden="true"></i>
-            <span class="post-time">2021-12-30</span>
-          </div>
-          <div class="post-title">
-            <a class="post-title-link" href="/2021/12/30/python%E7%94%BB%E5%9B%BE%E7%9A%84%E6%8A%80%E5%B7%A7/"></a>
-          </div>
-          <div class="post-meta">
-            <div class="post-tags">
-              <!-- 文章详情页的标签 -->
-
-            </div>
-            <div class="post-categories">
-              <!-- 文章详情页的分类 -->
-
-
-            </div>
-          </div>
-          <div class="post-img-mobile">
-            <a href="/2021/12/30/python%E7%94%BB%E5%9B%BE%E7%9A%84%E6%8A%80%E5%B7%A7/" style="background-size: cover; 
-              background-position: center center;">
-              <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-            </a>
-          </div>
-          <div class="post-content">
-            一.legend的设置@https://www.cnblogs.com/shanger/p/13021463.html
-123456789101112131415161718192021222324252627282930313233343
-          </div>
-        </div>
-        <div class="post-more">
-          <a href="/2021/12/30/python%E7%94%BB%E5%9B%BE%E7%9A%84%E6%8A%80%E5%B7%A7/">
-            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
-          </a>
-        </div>
-      </div>
-      <div class="post-img">
-        <a href="/2021/12/30/python%E7%94%BB%E5%9B%BE%E7%9A%84%E6%8A%80%E5%B7%A7/" style="background-size: cover; 
-          background-position: center center;">
-          <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-        </a>
-      </div>
-    </article>
-  
-    
-    <article class="post reveal" style="   ">
-      <div class="post-main">
-        <div class="post-info">
-          <div class="post-time">
-            <i class="fas fa-clock" aria-hidden="true"></i>
-            <span class="post-time">2021-12-30</span>
-          </div>
-          <div class="post-title">
-            <a class="post-title-link" href="/2021/12/30/QE%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AE%9E%E8%B7%B5%E5%87%86%E5%88%99/"></a>
-          </div>
-          <div class="post-meta">
-            <div class="post-tags">
-              <!-- 文章详情页的标签 -->
-
-            </div>
-            <div class="post-categories">
-              <!-- 文章详情页的分类 -->
-
-
-            </div>
-          </div>
-          <div class="post-img-mobile">
-            <a href="/2021/12/30/QE%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AE%9E%E8%B7%B5%E5%87%86%E5%88%99/" style="background-size: cover; 
-              background-position: center center;">
-              <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-            </a>
-          </div>
-          <div class="post-content">
-            一 . 实现结构弛豫收敛的原则与方法1.结构弛豫收敛标准：1） 相邻两个离子步总能的变化小于etot_conv_thr(1.0D-4)2)  各个离子之间受力小于 forc_conv_thr(1.0D-3)3)  vc-relax还要求ce
-          </div>
-        </div>
-        <div class="post-more">
-          <a href="/2021/12/30/QE%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AE%9E%E8%B7%B5%E5%87%86%E5%88%99/">
-            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
-          </a>
-        </div>
-      </div>
-      <div class="post-img">
-        <a href="/2021/12/30/QE%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AE%9E%E8%B7%B5%E5%87%86%E5%88%99/" style="background-size: cover; 
-          background-position: center center;">
-          <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+          <img class="lazyload lazyload placeholder" src="/medias/13.jpg" class="lazyload placeholder" data-srcset="/medias/13.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
         </a>
       </div>
     </article>
@@ -1652,19 +1360,19 @@
     <!-- 翻页 -->
     
   <!-- <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next</a>
+    <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav> -->
   <div class="page-nav">
     
+      <a href="/"
+         class="page-nav-pre">
+         <i class="fas fa-angle-left"></i><span class="ml-5">Prev</span>
+      </a>
+    
     <div class="page-info">
-        <div class="page-info-text">1 / 2</div>
+        <div class="page-info-text">2 / 2</div>
     </div>
     
-      <a href="/page/2/"
-         class="page-nav-next">
-          <span class="mr-5">Next</span><i class="fas fa-angle-right"></i>
-      </a>
-      
   </div>
 
   </div>

@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>archives | NaWu</title>
+  <title>NaWu</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -394,275 +394,529 @@
   
 </header>
         <!-- 内容区域 -->
-        <div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-archive" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
-<div class="archive-header" style="background-image:url('https://pic1.zhimg.com/80/v2-1414b3a4b205e19060db18a20d08723a_1440w.jpg?source=1940ef5c')">
-  <div class="archive-header-title">
-    archive
-  </div>
-  <div class="archive-header-desc">
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('/medias/1.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
-  <span class="title" id="archive-header-desc"></span>
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2021-12-30 |
+        </span>
+      
+
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="TDPW-study"><a href="#TDPW-study" class="headerlink" title="TDPW-study"></a>TDPW-study</h1><p>参考：@<a target="_blank" rel="noopener" href="https://tdap-help.github.io/TDAPW/">https://tdap-help.github.io/TDAPW/</a></p>
+<h1 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h1><h2 id="td-ht-2只有TDKS轨道演化的时候提高收敛性的"><a href="#td-ht-2只有TDKS轨道演化的时候提高收敛性的" class="headerlink" title="td_ht=2只有TDKS轨道演化的时候提高收敛性的"></a>td_ht=2只有TDKS轨道演化的时候提高收敛性的</h2><h2 id="TDPAW是基于QE（平面波）的含时第一性原理软件"><a href="#TDPAW是基于QE（平面波）的含时第一性原理软件" class="headerlink" title="TDPAW是基于QE（平面波）的含时第一性原理软件"></a>TDPAW是基于QE（平面波）的含时第一性原理软件</h2><h2 id="一-理论"><a href="#一-理论" class="headerlink" title="一.理论"></a>一.理论</h2><pre><code>  对比TDAP
+  @http://tdap.iphy.ac.cn/  ，TDPW是基于平面波基基底`&#123;G&#125;`来应用TDDFT,在平面波基底下，含时的Kohn-Sham(TDKS)态
+  基本理论如下：
+</code></pre>
+<img width="921" alt="捕获" src="https://user-images.githubusercontent.com/76439954/113078104-e9d6b000-917e-11eb-963e-6ca41d825ac4.PNG" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/113078104-e9d6b000-917e-11eb-963e-6ca41d825ac4.PNG" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg">
+<img width="636" alt="2" src="https://user-images.githubusercontent.com/76439954/113078117-ee9b6400-917e-11eb-8504-26275d46ab7a.PNG" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/113078117-ee9b6400-917e-11eb-8504-26275d46ab7a.PNG" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg">
+<img width="598" alt="3" src="https://user-images.githubusercontent.com/76439954/113078122-f22eeb00-917e-11eb-8814-88f9ea7c69b0.PNG" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/113078122-f22eeb00-917e-11eb-8814-88f9ea7c69b0.PNG" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg">
+
+<h2 id="二-输入"><a href="#二-输入" class="headerlink" title="二.输入"></a>二.输入</h2><h3 id="1-参数表"><a href="#1-参数表" class="headerlink" title="1.参数表"></a>1.参数表</h3><img width="772" alt="para" src="https://user-images.githubusercontent.com/76439954/117662646-5dce9400-b1d2-11eb-918a-3ad767b2bb8b.png" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/117662646-5dce9400-b1d2-11eb-918a-3ad767b2bb8b.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg">
+<img width="585" alt="td_ht" src="https://user-images.githubusercontent.com/76439954/117662667-62934800-b1d2-11eb-95a6-35b26e60573d.png" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/117662667-62934800-b1d2-11eb-95a6-35b26e60573d.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg">
+<img width="529" alt="td_ht1" src="https://user-images.githubusercontent.com/76439954/117662673-64f5a200-b1d2-11eb-9079-e428f8b729ab.png" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/117662673-64f5a200-b1d2-11eb-9079-e428f8b729ab.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg">
+
+
+
+
+<h3 id="2-更改占据数"><a href="#2-更改占据数" class="headerlink" title="2.更改占据数"></a>2.更改占据数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp pwscf.NAnorm.dat pwscf.TDPOP.in</span><br></pre></td></tr></table></figure>
+<p>找到要更改的第k个<br>然后执行 <code>tdpw.x pw.MoS2.scf.in</code></p>
+<h4 id="记得将-amp-CONTROL里面的tddft-is-on设置成true"><a href="#记得将-amp-CONTROL里面的tddft-is-on设置成true" class="headerlink" title="记得将&amp;CONTROL里面的tddft_is_on设置成true"></a>记得将<code>&amp;CONTROL</code>里面的<code>tddft_is_on</code>设置成<code>true</code></h4><h3 id="3-nstep的选择"><a href="#3-nstep的选择" class="headerlink" title="3.nstep的选择"></a>3.nstep的选择</h3><h4 id="1）edt：默认10au，精确-20au-看模拟的现象有多长视情况而定-1-a-u-4-8378-10-17-s"><a href="#1）edt：默认10au，精确-20au-看模拟的现象有多长视情况而定-1-a-u-4-8378-10-17-s" class="headerlink" title="1）edt：默认10au，精确:20au (看模拟的现象有多长视情况而定) 1 a.u.=4.8378 * 10^-17 s"></a>1）edt：默认10au，精确:20au (看模拟的现象有多长视情况而定) 1 a.u.=4.8378 * 10^-17 s</h4><h4 id="2）nstep：不用过分考虑，TDAPW可以续算"><a href="#2）nstep：不用过分考虑，TDAPW可以续算" class="headerlink" title="2）nstep：不用过分考虑，TDAPW可以续算"></a>2）nstep：不用过分考虑，TDAPW可以续算</h4><h5 id="A-如果是scf-nscf默认是1"><a href="#A-如果是scf-nscf默认是1" class="headerlink" title="A.如果是scf/nscf默认是1"></a>A.如果是scf/nscf默认是1</h5><h5 id="B-如果是md默认是50"><a href="#B-如果是md默认是50" class="headerlink" title="B.如果是md默认是50"></a>B.如果是md默认是50</h5><img width="1054" alt="nstep" src="https://user-images.githubusercontent.com/76439954/112928592-60ae7300-90c3-11eb-9fe8-bee9c1309790.PNG" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/112928592-60ae7300-90c3-11eb-9fe8-bee9c1309790.PNG" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg">
+
+
+<h4 id="3）mstep：默认500-是将edt分成mstep份，按照每一份演化"><a href="#3）mstep：默认500-是将edt分成mstep份，按照每一份演化" class="headerlink" title="3）mstep：默认500,是将edt分成mstep份，按照每一份演化"></a>3）mstep：默认500,是将edt分成mstep份，按照每一份演化</h4><h4 id="4）dt：-针对离子-固定原子情况下，dt-0；其他情况下，dt-edt"><a href="#4）dt：-针对离子-固定原子情况下，dt-0；其他情况下，dt-edt" class="headerlink" title="4）dt：(针对离子)固定原子情况下，dt=0；其他情况下，dt=edt"></a>4）dt：(针对离子)固定原子情况下，dt=0；其他情况下，dt=edt</h4><h3 id="4-系综"><a href="#4-系综" class="headerlink" title="4.系综"></a>4.系综</h3><p>NVT:如果只关心结构不关心时间演化，用NVT随便跑，跑的时间越长越好，采样间隔越大越好</p>
+<p>NVE：NVT比NVE多了热浴的影响，采样更快，NVE跑出的构型不多，完全孤立，体系类似平衡位置振荡</p>
+<h2 id="三-输出"><a href="#三-输出" class="headerlink" title="三.输出"></a>三.输出</h2><img width="624" alt="输出文件" src="https://user-images.githubusercontent.com/76439954/113080298-26a4a600-9183-11eb-85e4-974564e79a89.PNG" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/113080298-26a4a600-9183-11eb-85e4-974564e79a89.PNG" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg">
+###  1. out文件如何查看
+<img width="504" alt="1" src="https://user-images.githubusercontent.com/76439954/113156671-ab74db80-91e6-11eb-8a58-d93c939565e2.PNG" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/113156671-ab74db80-91e6-11eb-8a58-d93c939565e2.PNG" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg">
+
+<h2 id="四-注意事项"><a href="#四-注意事项" class="headerlink" title="四.注意事项"></a>四.注意事项</h2><h3 id="1-输出磁矩"><a href="#1-输出磁矩" class="headerlink" title="1.输出磁矩"></a>1.输出磁矩</h3><p>在ecutrho=4<em>ecutwfc时(默认情况), 输出的pwscf.x.magKS.dat文件，每个能带满足 Sx^2+Sy^2+Sz^2 = 1<br>当ecutrho不等于4</em>ecutwfc时，之前tdpw.x输出的pwscf.x.magKS.dat文件，每个能带满足 Sx^2+Sy^2+Sz^2 = 1<em>c, c近似于(4</em>ecutwfc/ecutrho)^3<br>之前的计算结果可以通过人为归一化得到Sx^2+Sy^2+Sz^2 = 1<br>本邮件中的版本, ecutrho取任何值时, 每个能带均满足 Sx^2+Sy^2+Sz^2 = 1</p>
+<p>bug原因: 密度和波函数的实空间网格点在ecutrho不等于4<em>ecutwfc时不相同，之前的程序采用实空间波函数计算 积分\inf psi(r)^</em>Spsi(r) dr时, 积分时dr用的密度网格点的dr. </p>
+<h3 id="2-更正"><a href="#2-更正" class="headerlink" title="2.更正"></a>2.更正</h3><p>仅增加在noncolinear时输出各个KS/TDKS波函数的自旋, 输出单位Bohr mag/cell, 乘上占据数和k点权重等于total magnetization.<br>默认输出td_outputS=T, 关闭输出设置td_outputS=F</p>
+<p>输出文件格式同能级文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pwscf.x.magKS.dat</span><br><span class="line">pwscf.x.magTDKS.dat</span><br><span class="line">pwscf.y.magKS.dat</span><br><span class="line">pwscf.y.magTDKS.dat</span><br><span class="line">pwscf.z.magKS.dat</span><br><span class="line">pwscf.z.magTDKS.dat</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-新功能"><a href="#3-新功能" class="headerlink" title="3.新功能"></a>3.新功能</h3><p>新功能:    </p>
+<pre><code>    1. 新增加了一些参数: https://tdap-help.github.io/TDAPW/20-Input/2020-04-18-Parameter/        
+    2. 默认不会输出向0时刻的基矢投影, 设置 cal_pop0 = T 进行计算      
+    3. 指定DFT任意k点、能级的占据数: td_constrained = T;  TDDFT的初态占据数反转: pwscf.TDPOP.in或续算     
+    4. 输出KS/TDKS波函数到pwscfN.save/pwscfNtdks.save: nwevc = N,  punchks/punchtdks = T, 可使用QE的后处理模块进行额外计算, i.e. wannier中心拟合      
+    5. k点电流: td_current_k = T     
+    6. 考虑tdks交叉项对电荷密度的贡献: use_tdks = T (同时建议设置td_ht=2 提高收敛性), (如果要得到震荡的Dipole信号此处要设为T)    
+    7. 长度规范 tefield = T, GaugeField = F, 电场的空间分布: emaxpos, eopreg, 见QE    
+    8. 速度规范(default) GaugeField = T   
+    9. 进行BO计算/scf/relax/nscf/..., tddft_is_on = F   
+    10. 在考虑SOC时输出电流 current_debug = T   
+    11. 磁场 &amp;SYSTEM  B_field(i)=0.1, i=1,3  /   
+    12. 让程序保存数据正常结束计算:在运行目录创建TDPWSTOP文件; 让程序暂时休息不停止, 创建TDPWSLEEP, 删除TDPWSLEEP文件后，自动恢复计算   
+    13. 续算, 前提是程序正常结束/创建TDPWSTOP让程序结束, 不要删除任何文件, 输入参数restart_mode = &#39;restart&#39;, 程序会续写投影等占据数文件.    
+    14. 长度规范: theta(-t)电场: LastDiagonE, kick/delta电场: LastDiagonExp, 同时只设置TDEFIELD.in的第二行(如果设置第三行及以后,则会在模拟过程加光)   
+    15. 速度规范: theta(-t)电场: LastDiagonA, 同时只设置TDEFIELD.in的第二行(如果设置第三行及以后,则会在模拟过程加光)    
+    16. 计算Dipole td_outputD = T, 计算角动量td_outputL=T   
+    17. Dipole/角动量的原点默认由emaxpos, eopreg定义, 也可以通过 use_origin    =   T, originx=0.5, originy=0.5, originz=0.5 指定   
+    18. debug性质输出轨道角动量lorbm = T, 参数和计算模块同QE，计算的性质暂时不明朗    
+    19. BUG修复: TDEFIELD.in 内容的行数不用设置和nstep一致, 缺少的行会自动补上0, 不再报错终止.   
+    20. Image并行计算/RP-TDAP计算,复制tdpw.x为manytdpw.x, 脚本EXEC用manytdpw.x, 以文件名区分是否Image并行. k点并行支持同QE.
+    21. 选用不同的磁结构，然后进行固定轨迹演化
+    &lt;img width=&quot;597&quot; alt=&quot;微信图片_20211125120309&quot; src=&quot;https://user-images.githubusercontent.com/76439954/143377876-aae9fb91-1730-4271-918b-16af4269f6d5.png&quot;&gt;
+</code></pre>
+<img width="597" alt="微信图片_20211125120309" src="https://user-images.githubusercontent.com/76439954/143377955-aeb6ea8a-91b7-4146-ae75-7334a8c8fed3.png" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/143377955-aeb6ea8a-91b7-4146-ae75-7334a8c8fed3.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg">
+
+<h3 id="4-常见问题"><a href="#4-常见问题" class="headerlink" title="4.常见问题"></a>4.常见问题</h3><h3 id="1）"><a href="#1）" class="headerlink" title="1）"></a>1）</h3><p>问: 还有 use_origin 参数设置成 F 的含义是？<br>答: 默认计算时，光场的V=eEr, Dipole =\int rho(r)rdr, ….等F(r)的计算，需要定义原点，默认use_origin =F<br>use_origin =F的含义是是使用QE的    emaxpos和eopreg定义原点和r的取值<br>use_origin =T通过人为输入originx,originy,originz设置原点位置，分数坐标，范围【0-1】<br>等价的：<br>使用  emaxpos = 0.95 !max position<br>  eopreg = 0.1   !emaxpos+eopreg min position<br>或者use_origin=T；originx=0.5<br>originy=0.5<br>originz=0.5<br><img src="https://user-images.githubusercontent.com/76439954/115362491-2af93780-a1f4-11eb-9fea-f4e42dc13c1e.jpg" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/115362491-2af93780-a1f4-11eb-9fea-f4e42dc13c1e.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信图片_20210420161914"></p>
+<h3 id="2）"><a href="#2）" class="headerlink" title="2）"></a>2）</h3><p>QE的pp.x可以直接画各个轨道的自旋空间分布，使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nwevc        =  N</span><br><span class="line">punchks       =  F</span><br><span class="line">punchtdks     =  F</span><br></pre></td></tr></table></figure>
+<p>输出各个时刻的ks/tdks即可以自旋的空间分布，积分就是mag.EIG文件</p>
+<img width="721" alt="微信图片_20210420162054" src="https://user-images.githubusercontent.com/76439954/115362715-67c52e80-a1f4-11eb-8bd0-008b48d657f3.png" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/115362715-67c52e80-a1f4-11eb-8bd0-008b48d657f3.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg">
+
+
+<h3 id="3"><a href="#3" class="headerlink" title="3)"></a>3)</h3><p>TDPW模拟过程中dt的设置</p>
+<ol>
+<li>如果不设置dt，默认dt=20au，显然不适合跑tddft   </li>
+<li>设置dt=edt是电子原子一起演化，即Ehrenfest计算   </li>
+<li>设置dt=1E-15或0.0，为固定原子位置，只演化电子坐标，为TDDFT计算   </li>
+</ol>
+<h3 id="5-增加功能（2021-11-25）"><a href="#5-增加功能（2021-11-25）" class="headerlink" title="5.增加功能（2021/11/25）"></a>5.增加功能（2021/11/25）</h3><img width="426" alt="微信图片_20211125120148" src="https://user-images.githubusercontent.com/76439954/143377785-ff270ea3-22bd-41b3-9e1c-9b5d7a2a65b5.png" class="lazyload placeholder" data-srcset="https://user-images.githubusercontent.com/76439954/143377785-ff270ea3-22bd-41b3-9e1c-9b5d7a2a65b5.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg">
+
+
+
+      </div>
+      <div class="post-tags-categories">
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>NaWu</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2021/12/30/tdapw/" target="_blank" title="">http://example.com/2021/12/30/tdapw/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="/2021/12/30/%E5%90%8E%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text"></div>
+      </div>
+      <!-- <div class="content">
+        已知：该脚本是针对MoS2中991的k-mesh来展开的，主要K谷和K’谷刚好在第31和61个k点处，可在MoS2_sc
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="/medias/zfb.jpg" class="lazyload placeholder" data-srcset="/medias/zfb.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="/medias/wx.jpg" class="lazyload placeholder" data-srcset="/medias/wx.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>catalog</span>
+        
+          <div class="toc-open-close">catalog</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
   <script>
-  function typedFn() {
-    const el = '#archive-header-desc';
-    const type = 'archive';
-    let desc = '愿你如风，被人温柔以待'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
-</script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
   
-  </div>
-  <div class="mask-box"></div>
-</div>
-
-<div class="archive-video">
-  <video class="full-video" autoplay loop muted>
-      <source style="width: 100%;height: 100vh;" src="/">
-  </video>
-  <div class="video-header-title">
-    archive
-  </div>
-  <div class="video-header-desc">
-  
-      <span class="title" id="archive-video-header-desc"></span>
-      <script>
-  function typedFn() {
-    const el = '#archive-video-header-desc';
-    const type = 'archive';
-    let desc = '愿你如风，被人温柔以待'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
 </script>
-      
-  </div>
-  <div class="mask-box"></div>
-</div>
 
-<!-- hash算法 -->
-
-
-<div class="archive-main">
-  <section class="archive">
-    <div class="archive-content">
-      <ul class="post-archive">
-        
-        
-          
-            
-            <div class="year" data-aos="zoom-in-up">
-                <div class="bullet"></div>
-                <a href="/archives/2021">2021</a>
-            </div>
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2021/12/30/tdapw/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">12-30</span>
-              </div>
-              <a class="post-title" href="/2021/12/30/tdapw/"></a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2021/12/30/%E5%90%8E%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">12-30</span>
-              </div>
-              <a class="post-title" href="/2021/12/30/%E5%90%8E%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC/"></a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2021/12/30/constrained-magnetization/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">12-30</span>
-              </div>
-              <a class="post-title" href="/2021/12/30/constrained-magnetization/"></a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2021/12/30/k%E7%A9%BA%E9%97%B4%E7%9A%84%E7%A7%AF%E5%88%86/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">12-30</span>
-              </div>
-              <a class="post-title" href="/2021/12/30/k%E7%A9%BA%E9%97%B4%E7%9A%84%E7%A7%AF%E5%88%86/"></a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2021/12/30/MoS2/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">12-30</span>
-              </div>
-              <a class="post-title" href="/2021/12/30/MoS2/"></a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2021/12/30/nawu/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">12-30</span>
-              </div>
-              <a class="post-title" href="/2021/12/30/nawu/"></a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2021/12/30/%E6%94%B6%E6%95%9B%E9%97%AE%E9%A2%98/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">12-30</span>
-              </div>
-              <a class="post-title" href="/2021/12/30/%E6%94%B6%E6%95%9B%E9%97%AE%E9%A2%98/"></a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2021/12/30/%E6%A8%A1%E5%AE%88%E6%81%92%E8%B5%9D%E5%8A%BFONCVPSP/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">12-30</span>
-              </div>
-              <a class="post-title" href="/2021/12/30/%E6%A8%A1%E5%AE%88%E6%81%92%E8%B5%9D%E5%8A%BFONCVPSP/"></a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2021/12/30/python%E7%94%BB%E5%9B%BE%E7%9A%84%E6%8A%80%E5%B7%A7/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">12-30</span>
-              </div>
-              <a class="post-title" href="/2021/12/30/python%E7%94%BB%E5%9B%BE%E7%9A%84%E6%8A%80%E5%B7%A7/"></a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2021/12/30/QE%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AE%9E%E8%B7%B5%E5%87%86%E5%88%99/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">12-30</span>
-              </div>
-              <a class="post-title" href="/2021/12/30/QE%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AE%9E%E8%B7%B5%E5%87%86%E5%88%99/"></a>
-            </div>
-          </li>
-        
-      </ul>
-    </div>
-  </section>
-  <div class="w-70">
-    
-  <!-- <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next</a>
-  </nav> -->
-  <div class="page-nav">
-    
-    <div class="page-info">
-        <div class="page-info-text">1 / 2</div>
-    </div>
-    
-      <a href="/archives/page/2/"
-         class="page-nav-next">
-          <span class="mr-5">Next</span><i class="fas fa-angle-right"></i>
-      </a>
-      
-  </div>
-
-  </div>
-</div>
 
       </main>
     </div>
