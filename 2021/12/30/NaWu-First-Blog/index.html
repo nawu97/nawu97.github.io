@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>利用vesta建模关于MoS2-graphene的异质结 | NaWu</title>
+  <title>NaWu-First-Blog | NaWu</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -408,14 +408,14 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/medias/16.jpg')">
+  background-position: center center;position: relative;background-image:url('/medias/28.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        利用vesta建模关于MoS2-graphene的异质结
+        NaWu-First-Blog
       </span>
     </div>
     
@@ -446,17 +446,17 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="利用vesta建模关于MoS2-graphene的异质结"><a href="#利用vesta建模关于MoS2-graphene的异质结" class="headerlink" title="利用vesta建模关于MoS2-graphene的异质结"></a>利用vesta建模关于MoS2-graphene的异质结</h1><p>参考：@<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1g54y1j7nA?p=9">https://www.bilibili.com/video/BV1g54y1j7nA?p=9</a></p>
-<h2 id="1-准备：关于MoS2和graphene的vasp格式的文件"><a href="#1-准备：关于MoS2和graphene的vasp格式的文件" class="headerlink" title="1.准备：关于MoS2和graphene的vasp格式的文件"></a>1.准备：关于MoS2和graphene的vasp格式的文件</h2><p>MoS2的vasp文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Mo S2</span><br><span class="line">1.0</span><br><span class="line">        3.1903157234         0.0000000000         0.0000000000</span><br><span class="line">       -1.5951578617         2.7628944626         0.0000000000</span><br><span class="line">        0.0000000000         0.0000000000        14.8790035248</span><br><span class="line">   Mo    S</span><br><span class="line">    1    2</span><br><span class="line">Cartesian</span><br><span class="line">     1.595157909         0.920964848        11.159253530</span><br><span class="line">     0.000000000         1.841929697        12.724137035</span><br><span class="line">     0.000000000         1.841929697         9.594368252</span><br></pre></td></tr></table></figure>
-<p>Graphene的vasp文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">grephene</span><br><span class="line">1.0</span><br><span class="line">        2.4680302143         0.0000000000         0.0000000000</span><br><span class="line">       -1.2340151072         2.1373768629         0.0000000000</span><br><span class="line">        0.0000000000         0.0000000000        19.9982929230</span><br><span class="line">    C</span><br><span class="line">    2</span><br><span class="line">Cartesian</span><br><span class="line">     1.234015144         0.712458976         0.000000000</span><br><span class="line">     0.000000000         1.424917951         0.000000000</span><br></pre></td></tr></table></figure>
-<h3 id="2-做法"><a href="#2-做法" class="headerlink" title="2.做法"></a>2.做法</h3><h4 id="晶矢的设置：两个材料晶矢均值，即"><a href="#晶矢的设置：两个材料晶矢均值，即" class="headerlink" title="晶矢的设置：两个材料晶矢均值，即"></a>晶矢的设置：两个材料晶矢均值，即</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MoS2-graphene</span><br><span class="line">1.0</span><br><span class="line">        2.4680302143         0.0000000000         0.0000000000</span><br><span class="line">       -1.2340151072         2.1373768629         0.0000000000</span><br><span class="line">        0.0000000000         0.0000000000        19.9982929230</span><br></pre></td></tr></table></figure>
-<h4 id="原子位置坐标："><a href="#原子位置坐标：" class="headerlink" title="原子位置坐标："></a>原子位置坐标：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">edit data-phase-import(引入另一个材料的vasp）-apply</span><br><span class="line">export-*.xyz文件</span><br></pre></td></tr></table></figure>
-<p>选择*.xyz文件，复制内容进新的异质结的vasp文件</p>
-<h4 id="原子间隔的设置：edit-structure-parameters"><a href="#原子间隔的设置：edit-structure-parameters" class="headerlink" title="原子间隔的设置：edit-structure parameters"></a>原子间隔的设置：edit-structure parameters</h4>
+        <h1 id="Hello-everyone！"><a href="#Hello-everyone！" class="headerlink" title="Hello everyone！"></a>Hello everyone！</h1><h2 id="This-is-my-first-blog"><a href="#This-is-my-first-blog" class="headerlink" title="This is my first blog!"></a>This is my first blog!</h2><h1 id="BY-NaWu-IOP"><a href="#BY-NaWu-IOP" class="headerlink" title="BY NaWu@IOP"></a>BY NaWu@IOP</h1>
       </div>
       <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/others/" class="">
+              others
+            </a>
+          
+        </div>
         
       </div>
       
@@ -467,7 +467,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2021/12/30/vesta建模-异质结/" target="_blank" title="利用vesta建模关于MoS2-graphene的异质结">http://example.com/2021/12/30/vesta建模-异质结/</a>
+    <a href="/2021/12/30/NaWu-First-Blog/" target="_blank" title="NaWu-First-Blog">http://example.com/2021/12/30/NaWu-First-Blog/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -489,16 +489,16 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/23.jpg" class="lazyload placeholder" data-srcset="/medias/23.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+      <img class="lazyload lazyload placeholder" src="/medias/28.jpg" class="lazyload placeholder" data-srcset="/medias/28.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
     </div>
-    <a href="/2021/12/30/%E5%90%8E%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC/" class="post-nav-link">
+    <a href="/2021/12/30/MoS2/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">MoS2后处理脚本-计算磁矩</div>
+        <div class="title-text">MoS2的设定</div>
       </div>
       
       <!-- <div class="content">
-        已知：该脚本是针对MoS2中991的k-mesh来展开的，主要K谷和K’谷刚好在第31和61个k点处，可在MoS2_sc
+        1.MoS2有不同的构型在Materials-Project里包括两种A-B（编号：MoS2_mp-2815）与A-A（
       </div> -->
     </a>
   </div>
@@ -509,16 +509,15 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/26.jpg" class="lazyload placeholder" data-srcset="/medias/26.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="/medias/6.jpg" class="lazyload placeholder" data-srcset="/medias/6.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
     </div>
-    <a href="/2021/12/30/%E6%A8%A1%E5%AE%88%E6%81%92%E8%B5%9D%E5%8A%BFONCVPSP/" class="post-nav-link">
+    <a href="/2021/12/30/QE%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AE%9E%E8%B7%B5%E5%87%86%E5%88%99/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">模守恒赝势</div>
+        <div class="title-text">QE实践准则（未完待续...）</div>
       </div>
       <!-- <div class="content">
-        模守恒赝势ONCVPSP介绍：QE里以UPF形式的优化的模守恒赝势
-什么是ONCVPSP?对于平面波基底的计算,uspp
+        一 . 实现结构弛豫收敛的原则与方法1.结构弛豫收敛标准：1） 相邻两个离子步总能的变化小于etot_conv_thr(
       </div> -->
     </a>
   </div>
