@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>MD计算常用参数 | NaWu</title>
+  <title>Tag: Magnetization | NaWu</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -395,501 +395,105 @@
 </header>
         <!-- 内容区域 -->
         
- <!-- prismjs 代码高亮 -->
- 
 
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
+<div class="bg-light-floor-tagDetail" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
 
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
-
-
-  <!-- 文章详情页顶部图片和标题 -->
-
-
-
-
-<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/medias/18.jpg')">
-  <div class="post-detail-header-mask"></div>
-  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+<div class="tag-header" style="background-image: url('https://pic1.zhimg.com/80/v2-604a15cef201cf177943af2d915eb2e7_1440w.jpg?source=1940ef5c');">
+  <div class="tag-header-title">
+    tag
+  </div>
+  <div class="tag-header-desc">
   
-  <div class="post-detail-header_info-box">
-    <div class="title-box">
-      <span class="title">
-        MD计算常用参数
-      </span>
-    </div>
-    
-    
-      
-        <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2021-12-30 |
-        </span>
-      
-
-      
-
-      
-    
-  </div>
-  
-  
-    <script src="/js/bubble/bubble.js"></script>
-  
-</div>
-
-
-
-
-
-<div class="row justify-position" 
-  style="padding-top: 0px;">
-  <div class="main-content">
-    <article class="post post-detail">
-      <div class="post-content">
-        <h1 id="计算分子动力学"><a href="#计算分子动力学" class="headerlink" title="计算分子动力学"></a>计算分子动力学</h1><h2 id="qe中分子动力学的计算"><a href="#qe中分子动力学的计算" class="headerlink" title="qe中分子动力学的计算"></a>qe中分子动力学的计算</h2><h3 id="一-关于设置"><a href="#一-关于设置" class="headerlink" title="一.关于设置"></a>一.关于设置</h3><p><code>calculation=&#39;md&#39;</code>表示的是 分子动力学，将电子对离子的作用看成离子感受到的势，根据势能和离子出事的速度求解离子运动的牛顿方程<br><code>calculation=&#39;vc-md&#39;</code>表示的是 改变cell的分子动力学</p>
-<h3 id="二-相关参数"><a href="#二-相关参数" class="headerlink" title="二.相关参数"></a>二.相关参数</h3><h4 id="1-tstress默认-false"><a href="#1-tstress默认-false" class="headerlink" title="1.tstress默认.false."></a>1.<code>tstress</code>默认<code>.false.</code></h4><p>计算stress (如果<code>calculation=&#39;vc-md&#39;</code>或者<code>calculation=&#39;vc-relax&#39;</code>,该参数会自动设置为.true.)</p>
-<h4 id="2-tprnfor-计算forces"><a href="#2-tprnfor-计算forces" class="headerlink" title="2.tprnfor 计算forces"></a>2.<code>tprnfor</code> 计算forces</h4><p>(如果<code>calculation=&#39;vc-md&#39;</code>或者<code>calculation=&#39;relax&#39;</code>或者<code>calculation=&#39;md&#39;</code>,该参数会自动设置为.true.)</p>
-<h4 id="3-nosym默认-false"><a href="#3-nosym默认-false" class="headerlink" title="3.nosym默认.false."></a>3.<code>nosym</code>默认<code>.false.</code></h4><p>如果对称性没有应用（.true.）,<br>①在输入中提供k点的列表：则按“原样”使用它：不生成对称不等价的k点，并且电荷密度不对称<br>②在输入中提供均匀的k点网格，扩展到整个布里渊区，而与晶体的对称性无关。如果考虑时间反演对称性，除非指定noinv=.true.，否则k与-k可视为等价处理</p>
-<h5 id="注意事项：如果不知道确切需要使用什么，不要使用这一选项，且这一选项可能在以下情形中有用："><a href="#注意事项：如果不知道确切需要使用什么，不要使用这一选项，且这一选项可能在以下情形中有用：" class="headerlink" title="注意事项：如果不知道确切需要使用什么，不要使用这一选项，且这一选项可能在以下情形中有用："></a>注意事项：如果不知道确切需要使用什么，不要使用这一选项，且这一选项可能在以下情形中有用：</h5><p>①在低对称大原胞中，无法提供准确对称性的k点网格<br>②在分子动力学模拟<br>③计算孤立原子</p>
-<h4 id="4-nosym-字符串"><a href="#4-nosym-字符串" class="headerlink" title="4.nosym 字符串"></a>4.<code>nosym</code> 字符串</h4><p>可供选择有：<br>‘atomic’  原子电荷叠加的起始势（默认：scf,relax,md）<br>‘file’   从变量prefix和outdir指定的目录中的现有“ charge-density.xml”文件开始。对于nscf和band计算，这是默认设置，也是唯一可行的选择</p>
-<h4 id="5-针对-amp-IONS"><a href="#5-针对-amp-IONS" class="headerlink" title="5.针对&amp;IONS"></a>5.针对&amp;IONS</h4><p>如果计算<code>calculation=&#39;relax&#39;</code>，<code>&#39;md&#39;</code>，<code>&#39;vc-relax&#39;</code>或<code>&#39;vc-md&#39;</code>则必需计算<code>calculation=&#39;scf&#39;</code>的可选选项（仅使用ion_positions）</p>
-<h5 id="ion-dynamics-字符串—-用于指定不同类型的离子动力学"><a href="#ion-dynamics-字符串—-用于指定不同类型的离子动力学" class="headerlink" title="ion_dynamics 字符串—-用于指定不同类型的离子动力学"></a>ion_dynamics 字符串—-用于指定不同类型的离子动力学</h5><p>下面是不同类型的动力学可能性与规则:<br>当calculation=’relax’<br>    ‘bfgs’ （默认）基于trust radius过程，使用BFGS拟牛顿算法进行结构弛豫<br>    ‘damp’  使用阻尼（快速最小Verlet）动力学进行结构弛豫<br>当calculation=’md’<br>    ‘verlet’ (默认)使用Verlet算法对牛顿方程进行积分<br>    ‘langevin’  离子动力学过度阻尼langevin<br>    ‘langevin-smc’<br>当calculation=’vc-relax’<br>     ‘bfgs’ (默认) 使用bfgs准牛顿算法<br>     ‘damp’ 使用阻尼（贝曼）动力学进行结构弛豫<br>当calculation=’vc-md’<br>      ‘beeman’ （默认）使用贝曼动力学进行结构弛豫</p>
-<h5 id="ion-temperature-字符串，默认：’not-controlled’"><a href="#ion-temperature-字符串，默认：’not-controlled’" class="headerlink" title="ion_temperature 字符串，默认：’not_controlled’"></a>ion_temperature 字符串，默认：’not_controlled’</h5><p>可供选择有：<br>‘rescaling’ 通过速度缩放（第一种方法）控制离子温度，请参见参数tempw，tolp和nraise（仅适用于VC-MD）。<br>这种重新缩放方法是VC-MD当前唯一实现的方法<br>‘rescale-v’ 通过速度缩放控制离子温度<br>‘rescale-T’<br>‘reduce-T’<br>‘berendsen’ 使用“软”速度控制离子温度<br>‘andersen’ 使用Andersen恒温器控制离子温度(NVT,师兄常用)<br>‘svr’ 使用参数tempw和nraise使用随机速度重新缩放控制离子温度<br>‘initial’ 将离子速度初始化为温度温度，然后继续不受控制（NVE）<br>‘not_controlled’ 默认，离子温度不受控制(NVE)</p>
-<h5 id="tempw-实数，默认：300-D0"><a href="#tempw-实数，默认：300-D0" class="headerlink" title="tempw 实数，默认：300.D0"></a>tempw 实数，默认：300.D0</h5><p>对于大多数恒温器MD运行开始时的温度</p>
-<h5 id="tolp-实数，默认：100-D0"><a href="#tolp-实数，默认：100-D0" class="headerlink" title="tolp 实数，默认：100.D0"></a>tolp 实数，默认：100.D0</h5><p>速度缩放的公差。<br>如果运行平均温度和目标温度的差异大于tolp，则重新调整速度</p>
-<h5 id="delta-t-实数，默认：1-D0"><a href="#delta-t-实数，默认：1-D0" class="headerlink" title="delta_t 实数，默认：1.D0"></a>delta_t 实数，默认：1.D0</h5><p>如果<code>ion_temperature == &#39;rescale-T&#39;</code> 在每个步骤中，瞬时温度乘以delta_t，完成所有速度的缩放。<br>如果<code>ion_temperature ==&#39;reduce-T&#39;</code>每’nraise’一步，瞬时温度降低-delta_t（即delta_t &lt;0加到T）</p>
-<p>瞬时温度是在每次离子移动结束和重新定标之前计算，输出中报告的温度</p>
-<p>对于delta&lt;0，加热或冷却的实际平均比例粗略的应该是 C<em>delta_t/(nraise</em>dt)<br>（对于理想气体，C = 1，对于谐波固体，所有二次自由度之间的能量均分定理，C = 0.5）</p>
-<h5 id="nraise-整数，默认：1"><a href="#nraise-整数，默认：1" class="headerlink" title="nraise 整数，默认：1"></a>nraise 整数，默认：1</h5><p>如果<code>ion_temperature ==&#39;reduce-T&#39;</code>：每上升一步，瞬时温度就降低-delta_t（即将delta_t加到温度上）<br>···</p>
-<h5 id="refold-pos-默认：-false"><a href="#refold-pos-默认：-false" class="headerlink" title="refold_pos 默认：.false."></a>refold_pos 默认：.false.</h5><p>仅适用于分子动力学或阻尼动力学。<br>如果为.true.,将离子重新折叠到超胞中</p>
-<h4 id="6-针对-amp-CELL"><a href="#6-针对-amp-CELL" class="headerlink" title="6.针对&amp;CELL"></a>6.针对&amp;CELL</h4><h3 id="三-分子动力学"><a href="#三-分子动力学" class="headerlink" title="三.分子动力学"></a>三.分子动力学</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&amp;CONTROL</span><br><span class="line">calculation=&#x27;md&#x27;</span><br><span class="line">nstep=68</span><br><span class="line">dt=4</span><br><span class="line">/</span><br><span class="line">&amp;IONS</span><br><span class="line">!tempw起始温度</span><br><span class="line">tempw=0.1</span><br><span class="line">!系综，verlet(NVE)</span><br><span class="line">ion_dynamics=&#x27;verlet&#x27;</span><br><span class="line">/</span><br><span class="line">&amp;CELL</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
-<p><code>dt</code>实数，默认20.D0 </p>
-<h3 id="一般默认20au，精确至少用10au"><a href="#一般默认20au，精确至少用10au" class="headerlink" title="一般默认20au，精确至少用10au"></a>一般默认20au，精确至少用10au</h3><p>分子动力学的时间步长（以Rydberg原子单位表示）（1 a.u. = 4.8378 * 10 ^ -17 s：请注意，CP代码使用Hartree原子单位，仅为后者的一半！）</p>
-<p><code>nstep</code> 整数，默认：<br>当calculation=’scf’,’nscf’,’bands’ 默认值为1<br>当calculation为其他，默认值为50</p>
-<h3 id="nstep-在TDPW中可以续算，不用担心"><a href="#nstep-在TDPW中可以续算，不用担心" class="headerlink" title="nstep 在TDPW中可以续算，不用担心"></a>nstep 在TDPW中可以续算，不用担心</h3><p>如果看电子吸收谱，分辨率为0.1eV时， nstep*dt &gt; 40fs. 看THz光谱 nstep * dt &gt; 3ps</p>
-<h3 id="四-分子动力学系综的选择—NVE-NVT-NPT"><a href="#四-分子动力学系综的选择—NVE-NVT-NPT" class="headerlink" title="四.分子动力学系综的选择—NVE,NVT,NPT"></a>四.分子动力学系综的选择—NVE,NVT,NPT</h3><p>@<a target="_blank" rel="noopener" href="https://www.charmm.org/ubbthreads/ubbthreads.php?ubb=showflat&amp;Number=11071">https://www.charmm.org/ubbthreads/ubbthreads.php?ubb=showflat&amp;Number=11071</a><br>@<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Molecular_dynamics#Microcanonical_ensemble_(NVE)">https://en.wikipedia.org/wiki/Molecular_dynamics#Microcanonical_ensemble_(NVE)</a></p>
-<p>上述三者表示正则统计系综，暗示着变量守恒或者变化。N表示粒子数守恒</p>
-<h6 id="NVE—微正则系综"><a href="#NVE—微正则系综" class="headerlink" title="NVE—微正则系综"></a>NVE—微正则系综</h6><p>对应无热交换的过程，其分子动力学轨迹可以看作是势能和动能的交换，总能量是守恒的<br>粒子数（N）,体积（V）,能量（E）以及动能（KE）与势能(PE)之和守恒 :constant number (N), volume (V), and energy (E); the sum of kinetic (KE) and potential energy (PE) is conserved, T and P are unregulated </p>
-<h6 id="NVT—正则系综"><a href="#NVT—正则系综" class="headerlink" title="NVT—正则系综"></a>NVT—正则系综</h6><p>也称为恒温分子动力学（CTMD）。在NVT中，吸热和放热过程的能量与恒温器进行交换。粒子数（N）,体积（V），温度（T）守恒,通过一个热容器向守恒的哈密顿量中加入一个自由度，P不受约束<br>constant number (N), volume (V), and temperature (T); T is regulated via a thermostat, which typically adds a degree of freedom to the conserved Hamiltonian;  P is unregulated</p>
-<h6 id="NPT—除了恒温器外，还需要一个恒压器。"><a href="#NPT—除了恒温器外，还需要一个恒压器。" class="headerlink" title="NPT—除了恒温器外，还需要一个恒压器。"></a>NPT—除了恒温器外，还需要一个恒压器。</h6><p>烧瓶在环境温度和压力下均可打开，最适合实验室条件同上<br>as for NVT, but pressure (P) is regulated</p>
-<h6 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h6><p> ①NVE完全孤立，体系类似平衡位置震荡</p>
-<p> ②你可以不开SOC，不开自旋跑MD， 然后把结构提出来做scf计算，这样即节约计算量又才样丰富</p>
-<p> ③跑MD的精度，k点之类的都可以降低，只是为了采样构型，不用算的那么精确后期算磁性时需要精确</p>
-<p> ④可以看下体系的能量变化，取能量低的点结构</p>
-
-      </div>
-      <div class="post-tags-categories">
-        
-      </div>
-      
-        <div class="copyright">
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-    <strong>author:  </strong>NaWu</a>
-    </li>
-    <li class="post-copyright-link">
-    <strong>link:  </strong>
-    <a href="/2021/12/30/计算MD-分子动力学/" target="_blank" title="MD计算常用参数">http://example.com/2021/12/30/计算MD-分子动力学/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>Copyright notice:   </strong>
-      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
-      reprint policy. If reproduced, please indicate source!
-    </li>
-  </ul>
-<div>
-      
-    </article>
-    <!-- 上一篇文章和下一篇文章 -->
-    
-      <!-- 文章详情页的上一页和下一页 -->
-<div class="post-nav">
-
-
-
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/20.jpg" class="lazyload placeholder" data-srcset="/medias/20.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-    </div>
-    <a href="/2021/12/30/%E7%B2%BE%E7%A1%AE%E6%8E%A7%E5%88%B6origin%E8%BE%93%E5%87%BAword%E4%B8%AD%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F%E7%9B%B8%E5%90%8C%E7%9A%84%E6%96%B9%E6%B3%95/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">精确控制origin输出word中图片格式相同的方法</div>
-      </div>
-      
-      <!-- <div class="content">
-        精确控制origin输出word中图片格式相同的方法@https://www.docin.com/p-184568248
-      </div> -->
-    </a>
-  </div>
-
-
-
-  
-  <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/9.jpg" class="lazyload placeholder" data-srcset="/medias/9.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
-    </div>
-    <a href="/2021/12/30/%E8%AE%A1%E7%AE%97SOC%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="post-nav-link">
-      <div class="title">
-        Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">SOC计算注意</div>
-      </div>
-      <!-- <div class="content">
-        关于SOC计算的相关事项1）赝势的选择：选择带有rel的赝势2）对称性 关于对称性，有关的参数包括nosymLOGICA
-      </div> -->
-    </a>
-  </div>
-
-</div>
-
-    
-    
-
-    <!-- 打赏 -->
-    
-      <div id="appDonate" class="post-donate">
-  <div id="donate_board" class="donate_bar center" ref="donate">
-    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
-  </div>
-  <transition name="fade">
-    <div 
-      class="donate-box-mask"
-      v-cloak 
-      v-show="visible"
-      @click="cancelDialogDrawer()"
-    >
-    </div>
-  </transition>
-  <transition name="bounce">
-    <div class="donate-box" v-cloak v-show="visible">
-      <div class="donate-box_close">
-        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
-      </div>
-      <div class="donate-box_title">
-        <h4>
-          你的赏识是我前进的动力
-        </h4>
-      </div>
-      <div class="donate-box_tab">
-        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
-          支付宝
-        </div>
-        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
-          微信
-        </div>
-      </div>
-      <div class="donate-box_img">
-        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
-          <img src="/medias/zfb.jpg" class="lazyload placeholder" data-srcset="/medias/zfb.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
-        </div> 
-        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
-          <img src="/medias/wx.jpg" class="lazyload placeholder" data-srcset="/medias/wx.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
-        </div>
-      </div>
-    </div>
-  </transition>
-</div>
-
-<script>
-  var body = document.body || document.documentElement || window;
-  var vm = new Vue({
-    el: '#appDonate',
-    data: {
-      visible: false,
-      tabActive: 'Alipay',
-      top: 0,
-    },
-    computed: {
-    },
-    mounted() {
-    },
-    methods: {
-      showDialogDrawer() {
-        this.visible = true;
-        // 防止页面滚动，只能让弹框滚动
-        // function getScroll() {
-        //   return {
-        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
-        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-        //   };
-        // }
-        this.top = $(document).scrollTop() // or getScroll().top
-        // console.log('aa', $('.main-content'));
-        body.style.cssText = 'overflow: hidden;';
-      },
-      cancelDialogDrawer() {
-        this.visible = false;
-        body.removeAttribute('style');
-        $(document).scrollTop(this.top)
-      },
-      changeTabActive(name) {
-        this.tabActive = name;
-      }
-    },
-    created() {}
-  })
-</script>
-    
-
-    <!-- 分享 -->
-    
-      <!-- https://github.com/overtrue/share.js -->
-<!-- 文章详情页的分享 -->
-<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-
-<script src="/js/shareJs/social-share.min.js"></script>
-</script>
-
-<style>
-  .social-share {
-    margin: 20px 0;
-  }
-</style>
-
-
-    
-    
-    <!-- 评论 -->
-    <!-- 评论 -->
-
-  <div id="myComment">
-    
-      <div id="gitment-container"></div>
-
-    
-  </div>
-
-<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
-
-
-  </div>
-
-  <!-- 目录 -->
-  <!-- 文章详情页右侧目录 -->
-
-  <div class="toc-aside">
-    <div class="toc-main">
-      <div class="toc-aside-title">
-        <i class="fas fa-list-ul" aria-hidden="true"></i><span>catalog</span>
-        
-          <div class="toc-open-close">catalog</div>
-        
-      </div>
-      <div class="toc-content">
-        <div class="toc"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 手机端目录按钮 -->
-  <div id="toc-mobile-btn">
-    <i class="fas fa-list-ul" aria-hidden="true"></i>
-  </div>
-
-
-<script>
-  function closeToc(init) {
-    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
-    $(".toc-content").css({'width': 0});
-    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
-    $(".main-content").css({'width': '75%', 'margin': '10px auto'});
-  };
-  function openToc() {
-    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
-    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
-    $(".toc-content").css({'width': '300px'});
-    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
-  }
-  function openBtnClickFn () {
-    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
-    let open = eval('' || 'true');
-    openOrCloseBtn.click(function() {
-      if (open) {
-        closeToc();
-        open = false;
-      } else {
-        openToc();
-        open = true;
-      }
+    <span class="title" id="tag-header-desc"></span>
+    <script>
+  function typedFn() {
+    const el = '#tag-header-desc';
+    const type = 'tagDetail';
+    let desc = '愿你如风，被人温柔以待'
+    var typed = new Typed(el, {
+      strings: [desc],
+      startDelay: 100,
+      typeSpeed: 100,
+      loop: true,
+      backSpeed: 50,
+      showCursor: true
     });
-  };
-  openBtnClickFn();
-  initCloseTocWidth(true);
-
-  function initCloseTocWidth(init) {
-    if (window.innerWidth >= 992) {
-      let isClose = false;
-      isClose && closeToc(init)
-    }
   }
-
-  document.addEventListener('pjax:complete', function () {
-    $(".toc-aside").css({'transition': 'no'});
-  })
-  document.addEventListener('pjax:complete', function () {
-    openBtnClickFn();
-  })
-  
+  typedFn();
 </script>
-
-  <!-- 图片放大 Wrap images with fancybox support -->
-  <script src="/js/wrapImage.js"></script>
+    
+  </div>
+  <div class="mask-box"></div>
 </div>
 
-<!-- 文章详情页背景图 -->
-<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
-	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
-	<transition-group tag="ul" :name="names">
-		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
-			<img :src="image" class="bg-swiper-img no-lazy">
-		</li>
-	</transition-group>
-</div>
-<script>
-	var vm = new Vue({
-		el: '#appBgSwiper',
-		data: {
-			names: '' || 'fade' || 'fade', // translate-fade fade
-			mark: 0,
-			img: [],
-			bgColor: '',
-			time: null
-		},
-		methods: {   //添加方法
-			change(i, m) {
-				if (i > m) {
-					// this.names = 'fade';
-				} else if (i < m) {
-					// this.names = 'fade';
-				} else {
-					return;
-				}
-				this.mark = i;
-			},
-			prev() {
-				// this.names = 'fade';
-				this.mark--;
-				if (this.mark === -1) {
-					this.mark = 3;
-					return
-				}
-			},
-			next() {
-				// this.names = 'fade';
-				this.mark++;
-				if (this.mark === this.img.length) {
-					this.mark = 0;
-					return
-				}
-			},
-			autoPlay() {
-				// this.names = 'fade';
-				this.mark++;
-				if (this.mark === this.img.length) {
-					this.mark = 0;
-					return
-				}
-			},
-			play() {
-				let bgImgDelay = '' || '180000'
-				let delay = parseInt(bgImgDelay) || 180000;
-				this.time = setInterval(this.autoPlay, delay);
-			},
-			enter() {
-				clearInterval(this.time);
-			},
-			leave() {
-				this.play();
-			}
-		},
-		created() {
-			this.play()
-		},
-		beforeDestroy() {
-			clearInterval(this.time);
-		},
-		mounted() {
-			let prop = '' || '';
-			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
-			if (isImg) {
-				let img = prop.split(',');
-				let configRoot = '/'
-				let arrImg = [];
-				img.forEach(el => {
-					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
-					var objExp = new RegExp(Expression);
-
-					if (objExp.test(el)) {
-						// http or https
-						arrImg.push(el);
-					} else {
-						// 非http or https开头
-						// 本地文件
-						let firstStr = el.charAt(0);
-						if (firstStr == '/') {
-							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
-						}
-						el = configRoot + el;
-						arrImg.push(el);
-					}
-				})
-				this.img = arrImg;
-			} else {
-				this.bgColor = prop;
-			}
-		}
-	})
-</script>
-
-<style>
-	.bg-swiper-box {
-		position: absolute;
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-
-	.bg-swiper-img {
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
-	}
-</style>
 
 
+<div class="tag">
+  <div class="tag-name">
+    <div class="name" style="background-color: #E8F8F5;">Magnetization category</div>
+  </div>
+  <!-- 每一篇文章卡片 -->
+  <!-- hash算法 -->
 
-
-  <script>
-  function loadMermaid() {
-    if (document.getElementsByClassName('mermaid').length) {
-      if (window.mermaidJsLoad) mermaid.init()
-      else {
-        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
-          window.mermaidJsLoad = true
-          mermaid.initialize({
-            theme: 'default',
-          })
-          if ('true') {
-            mermaid.init();
-          }
-        })
-      }
-    }
-  };
-  document.addEventListener("DOMContentLoaded", function () {
-    loadMermaid();
-  })
-
-  document.addEventListener('pjax:complete', function () {
-    loadMermaid();
-  })
+<section class="posts">
   
-</script>
+    
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2021-12-30</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%A3%81%E6%80%A7/">QE计算磁性</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
 
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Magnetization/" rel="tag">Magnetization</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%A3%81%E6%80%A7/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="/medias/15.jpg" class="lazyload placeholder" data-srcset="/medias/15.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            关于计算材料的磁性注意事项：对称性的tag：nosym（空间对称性）noinv（时间对称性）no_t_rev=.True.（关于磁性计算中旋转平移对称性操作）
+关于磁性的tag· starting_spin_angle· nspin· ls
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%A3%81%E6%80%A7/">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%A3%81%E6%80%A7/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="/medias/15.jpg" class="lazyload placeholder" data-srcset="/medias/15.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+        </a>
+      </div>
+    </article>
+  
+</section>
+</div>
+
+<div class="w-70">
+  
+</div>
 
       </main>
     </div>
