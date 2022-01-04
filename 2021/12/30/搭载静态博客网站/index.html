@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>设置晶格常数 | NaWu</title>
+  <title>搭载静态博客网站 | NaWu</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -408,14 +408,14 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/medias/29.jpg')">
+  background-position: center center;position: relative;background-image:url('/medias/9.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        设置晶格常数
+        搭载静态博客网站
       </span>
     </div>
     
@@ -446,17 +446,51 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="设置结构常数信息"><a href="#设置结构常数信息" class="headerlink" title="设置结构常数信息"></a>设置结构常数信息</h1><h2 id="计算需要知道：原胞尺寸，原子坐标和晶格常数"><a href="#计算需要知道：原胞尺寸，原子坐标和晶格常数" class="headerlink" title="计算需要知道：原胞尺寸，原子坐标和晶格常数"></a>计算需要知道：原胞尺寸，原子坐标和晶格常数</h2><h3 id="这些从实验-文献中获得-或者COD数据库-http-www-crystallography-net-cod-）"><a href="#这些从实验-文献中获得-或者COD数据库-http-www-crystallography-net-cod-）" class="headerlink" title="(这些从实验**文献中获得 或者COD数据库@http://www.crystallography.net/cod/ ）"></a>(这些从<em>实验**文献</em>中获得 或者COD数据库@<a target="_blank" rel="noopener" href="http://www.crystallography.net/cod/">http://www.crystallography.net/cod/</a> ）</h3><h3 id="COD数据库使用说明："><a href="#COD数据库使用说明：" class="headerlink" title="COD数据库使用说明："></a>COD数据库使用说明：</h3><h4 id="COD主页–search–搜索“1-to-8-elements”–“number-of-distinct-elements-min-and-max”一栏输入2和2表示搜索二元化合物–点击cif开始下载cif文件"><a href="#COD主页–search–搜索“1-to-8-elements”–“number-of-distinct-elements-min-and-max”一栏输入2和2表示搜索二元化合物–点击cif开始下载cif文件" class="headerlink" title="COD主页–search–搜索“1 to 8 elements”–“number of distinct elements min and max”一栏输入2和2表示搜索二元化合物–点击cif开始下载cif文件"></a>COD主页–search–搜索“1 to 8 elements”–“number of distinct elements min and max”一栏输入2和2表示搜索二元化合物–点击cif开始下载cif文件</h4><h3 id="由cif文件得到pw-x输入文件："><a href="#由cif文件得到pw-x输入文件：" class="headerlink" title="由cif文件得到pw.x输入文件："></a>由cif文件得到pw.x输入文件：</h3><h4 id="1）使用vesta，MS"><a href="#1）使用vesta，MS" class="headerlink" title="1）使用vesta，MS"></a>1）使用vesta，MS</h4><h5 id="用vesta打开，点击File–export-Data—选择vasp格式"><a href="#用vesta打开，点击File–export-Data—选择vasp格式" class="headerlink" title="用vesta打开，点击File–export Data—选择vasp格式"></a>用vesta打开，点击File–export Data—选择vasp格式</h5><h4 id="注意：导入cif文件一般是晶胞，而非原胞（对于非简单格子，如面心，体心等），为了转换为原胞，最简单的方法是MS-也可以在-vesta中输入晶胞到原胞的转换矩阵，即Edit–edit-data"><a href="#注意：导入cif文件一般是晶胞，而非原胞（对于非简单格子，如面心，体心等），为了转换为原胞，最简单的方法是MS-也可以在-vesta中输入晶胞到原胞的转换矩阵，即Edit–edit-data" class="headerlink" title="注意：导入cif文件一般是晶胞，而非原胞（对于非简单格子，如面心，体心等），为了转换为原胞，最简单的方法是MS,也可以在 vesta中输入晶胞到原胞的转换矩阵，即Edit–edit data"></a>注意：导入cif文件一般是晶胞，而非原胞（对于非简单格子，如面心，体心等），为了转换为原胞，最简单的方法是MS,也可以在 vesta中输入晶胞到原胞的转换矩阵，即Edit–edit data</h4><p>data–unit cell–transform,这样不太容易找对称性，通常会输出下三角格式</p>
-<h4 id="新版的vesta增加了生成原胞的功能"><a href="#新版的vesta增加了生成原胞的功能" class="headerlink" title="新版的vesta增加了生成原胞的功能"></a>新版的vesta增加了生成原胞的功能</h4><h4 id="2-POSCAR格式与pw-x格式互相转换可以用QEtoolkit中的P2P工具-http-www-densityflow-com-p2p-php"><a href="#2-POSCAR格式与pw-x格式互相转换可以用QEtoolkit中的P2P工具-http-www-densityflow-com-p2p-php" class="headerlink" title="2)POSCAR格式与pw.x格式互相转换可以用QEtoolkit中的P2P工具@http://www.densityflow.com/p2p.php"></a>2)POSCAR格式与pw.x格式互相转换可以用QEtoolkit中的P2P工具@<a target="_blank" rel="noopener" href="http://www.densityflow.com/p2p.php">http://www.densityflow.com/p2p.php</a></h4><h4 id="3-使用QEtoolkit-http-www-densityflow-com"><a href="#3-使用QEtoolkit-http-www-densityflow-com" class="headerlink" title="3)使用QEtoolkit@http://www.densityflow.com/"></a>3)使用QEtoolkit@<a target="_blank" rel="noopener" href="http://www.densityflow.com/">http://www.densityflow.com/</a></h4><h4 id="4）使用cif2cell"><a href="#4）使用cif2cell" class="headerlink" title="4）使用cif2cell"></a>4）使用cif2cell</h4><p>命令：<code>cif2cell *.cif -p pwscf --supercell=[3,3,1]</code></p>
-<h2 id="设置pw-x输入文件（ibrav，celldm，nat，ntyp）"><a href="#设置pw-x输入文件（ibrav，celldm，nat，ntyp）" class="headerlink" title="设置pw.x输入文件（ibrav，celldm，nat，ntyp）"></a>设置pw.x输入文件（ibrav，celldm，nat，ntyp）</h2><h3 id="1-法1："><a href="#1-法1：" class="headerlink" title="1)法1："></a>1)法1：</h3><h4 id="设置ibrav和celldm-1-6-指定CELL，这时不写CELL-PARAMETERS"><a href="#设置ibrav和celldm-1-6-指定CELL，这时不写CELL-PARAMETERS" class="headerlink" title="设置ibrav和celldm(1-6)指定CELL，这时不写CELL_PARAMETERS"></a>设置ibrav和celldm(1-6)指定CELL，这时不写CELL_PARAMETERS</h4><h3 id="2）法2："><a href="#2）法2：" class="headerlink" title="2）法2："></a>2）法2：</h3><h4 id="设置ibrav-0和CELL-PARAMETERS-angstrom-，这时不允许写出celldm-1-，程序会自动内部设置celldm-1-alat-sqrt-v1-v1-，这里celldm代表晶格常数，单位是Bohr"><a href="#设置ibrav-0和CELL-PARAMETERS-angstrom-，这时不允许写出celldm-1-，程序会自动内部设置celldm-1-alat-sqrt-v1-v1-，这里celldm代表晶格常数，单位是Bohr" class="headerlink" title="设置ibrav=0和CELL_PARAMETERS (angstrom)，这时不允许写出celldm(1)，程序会自动内部设置celldm(1) = alat = sqrt(v1*v1)，这里celldm代表晶格常数，单位是Bohr"></a>设置ibrav=0和CELL_PARAMETERS (angstrom)，这时不允许写出celldm(1)，程序会自动内部设置celldm(1) = alat = sqrt(v1*v1)，这里celldm代表晶格常数，单位是Bohr</h4><p>在结构驰豫（calculation=’relax’）过程中，ATOMIC_POSITIONS是根据力而变化的，如果是vc-relax，原子坐标改变的同时，CELL_PARAMETERS根据应力变化（celldm在vc-relax时是不变的）</p>
-<h4 id="注意：自6-4-1版本，官方不推荐celldm-1-1-88972613（任何-lt-2的值）的做法，-gt-这里也修正为celldm-1-设置为晶格常数，或用ibrav≠0"><a href="#注意：自6-4-1版本，官方不推荐celldm-1-1-88972613（任何-lt-2的值）的做法，-gt-这里也修正为celldm-1-设置为晶格常数，或用ibrav≠0" class="headerlink" title="注意：自6.4.1版本，官方不推荐celldm(1)=1.88972613（任何&lt;2的值）的做法，&gt;这里也修正为celldm(1)设置为晶格常数，或用ibrav≠0"></a>注意：自6.4.1版本，官方不推荐celldm(1)=1.88972613（任何&lt;2的值）的做法，&gt;这里也修正为celldm(1)设置为晶格常数，或用ibrav≠0</h4>
+        <h1 id="将纯文本转换位静态博客网站"><a href="#将纯文本转换位静态博客网站" class="headerlink" title="将纯文本转换位静态博客网站"></a>将纯文本转换位静态博客网站</h1><h2 id="我自己的blog-https-nawu97-github-io-主要是利用hexo搭载的"><a href="#我自己的blog-https-nawu97-github-io-主要是利用hexo搭载的" class="headerlink" title="我自己的blog @https://nawu97.github.io/ 主要是利用hexo搭载的"></a>我自己的blog @<a target="_blank" rel="noopener" href="https://nawu97.github.io/">https://nawu97.github.io/</a> 主要是利用hexo搭载的</h2><h2 id="组里的blog-https-tdap-help-github-io-TDAPW-主要是利用jekyll搭载的"><a href="#组里的blog-https-tdap-help-github-io-TDAPW-主要是利用jekyll搭载的" class="headerlink" title="组里的blog @https://tdap-help.github.io/TDAPW/ 主要是利用jekyll搭载的"></a>组里的blog @<a target="_blank" rel="noopener" href="https://tdap-help.github.io/TDAPW/">https://tdap-help.github.io/TDAPW/</a> 主要是利用jekyll搭载的</h2><h3 id="下面就这两种搭载方式简单小结"><a href="#下面就这两种搭载方式简单小结" class="headerlink" title="下面就这两种搭载方式简单小结"></a>下面就这两种搭载方式简单小结</h3><h2 id="❀利用Hexo搭载"><a href="#❀利用Hexo搭载" class="headerlink" title="❀利用Hexo搭载"></a>❀利用Hexo搭载</h2><p>参考：<br>@<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60578464">https://zhuanlan.zhihu.com/p/60578464</a></p>
+<h3 id="原理：在本地撰写-Markdown-格式文章后，通过-Hexo-解析文档，渲染生成具有主题样式的-HTML-静态网页，再推送到-GitHub-上完成博文的发布。"><a href="#原理：在本地撰写-Markdown-格式文章后，通过-Hexo-解析文档，渲染生成具有主题样式的-HTML-静态网页，再推送到-GitHub-上完成博文的发布。" class="headerlink" title="原理：在本地撰写 Markdown 格式文章后，通过 Hexo 解析文档，渲染生成具有主题样式的 HTML 静态网页，再推送到 GitHub 上完成博文的发布。"></a>原理：在本地撰写 Markdown 格式文章后，通过 Hexo 解析文档，渲染生成具有主题样式的 HTML 静态网页，再推送到 GitHub 上完成博文的发布。</h3><h3 id="准备：node-js-https-nodejs-org-zh-cn-和Git-https-git-scm-com-downloads"><a href="#准备：node-js-https-nodejs-org-zh-cn-和Git-https-git-scm-com-downloads" class="headerlink" title="准备：node.js(@https://nodejs.org/zh-cn)和Git(@https://git-scm.com/downloads)"></a>准备：node.js(@<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn)%E5%92%8CGit(@https://git-scm.com/downloads)">https://nodejs.org/zh-cn)和Git(@https://git-scm.com/downloads)</a></h3><h4 id="具体安装："><a href="#具体安装：" class="headerlink" title="具体安装："></a>具体安装：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">下载 Node.js 和 Git 程序并安装，一路点 “下一步” 按默认配置完成安装。</span><br><span class="line"></span><br><span class="line">安装完成后，Win+R 输入 cmd 并打开，依次输入 node -v、npm -v 和 git --version 并回车，如下图出现程序版本号即可。</span><br></pre></td></tr></table></figure>
+<h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>使用npm一键安装：<code>npm install -g hexo-cli</code></p>
+<h4 id="初始化hexo"><a href="#初始化hexo" class="headerlink" title="初始化hexo"></a>初始化hexo</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init      # 初始化</span><br><span class="line">npm install    # 安装组件</span><br></pre></td></tr></table></figure>
+<h4 id="启动本地服务器预览"><a href="#启动本地服务器预览" class="headerlink" title="启动本地服务器预览"></a>启动本地服务器预览</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g   # 生成页面</span><br><span class="line">hexo s   # 启动预览</span><br><span class="line">hexo d   # 将网站上传到Github Pages</span><br></pre></td></tr></table></figure>
+<p>访问 <a href="http://localhost:4000，出现">http://localhost:4000，出现</a> Hexo 默认页面，本地博客安装成功！<br>Tips：如果出现页面加载不出来，可能是端口被占用了。Ctrl+C 关闭服务器，运行 hexo server -p 5000 更改端口号后重试。</p>
+<h3 id="备注：Hexo类型的博文结构特点"><a href="#备注：Hexo类型的博文结构特点" class="headerlink" title="备注：Hexo类型的博文结构特点"></a>备注：Hexo类型的博文结构特点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">config.yaml #网站的配置信息</span><br><span class="line">package.json #应用程序的信息</span><br><span class="line">scaffolds #模板文件</span><br><span class="line">source #存放用户资源，Mardown文件</span><br><span class="line">themes #主题文件</span><br><span class="line">public #网站文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h3><h4 id="1）发布博文"><a href="#1）发布博文" class="headerlink" title="1）发布博文"></a>1）发布博文</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;My New Post&quot;</span><br></pre></td></tr></table></figure>
+<p>每次发布文章：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g   # 生成页面</span><br><span class="line">hexo d   # 部署发布</span><br></pre></td></tr></table></figure>
+<p>也可以不使用命令自己创建 .md 文件，只需在文件开头手动加入如下格式 Front-matter 即可，写完后运行 hexo g 和 hexo d 发布。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World # 标题</span><br><span class="line">date: 2019/3/26 hh:mm:ss # 时间</span><br><span class="line">categories: # 分类</span><br><span class="line">- Diary</span><br><span class="line">tags: # 标签</span><br><span class="line">- PS3</span><br><span class="line">- Games</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">摘要</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">正文</span><br></pre></td></tr></table></figure>
+<h4 id="2-网站设置"><a href="#2-网站设置" class="headerlink" title="2)网站设置"></a>2)网站设置</h4><p>包括网站名称、描述、作者、链接样式等，全部在网站目录下的 _config.yml 文件中，参考官方文档按需要编辑。</p>
+<p>注意：冒号后要加一个空格！</p>
+<h4 id="3）更换主题"><a href="#3）更换主题" class="headerlink" title="3）更换主题"></a>3）更换主题</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>然后修改 config.yml 中的 theme 为新主题名称 next，发布。（有的主题需要将 _config.yml 替换为主题自带的，参考主题说明。）</p>
+<h4 id="4-常用命令"><a href="#4-常用命令" class="headerlink" title="4)常用命令"></a>4)常用命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;name&quot;       # 新建文章</span><br><span class="line">hexo new page &quot;name&quot;  # 新建页面</span><br><span class="line">hexo g                # 生成页面</span><br><span class="line">hexo d                # 部署</span><br><span class="line">hexo g -d             # 生成页面并部署</span><br><span class="line">hexo s                # 本地预览</span><br><span class="line">hexo clean            # 清除缓存和已生成的静态文件</span><br><span class="line">hexo help             # 帮助</span><br></pre></td></tr></table></figure>
+<h2 id="❀利用kekyll搭载"><a href="#❀利用kekyll搭载" class="headerlink" title="❀利用kekyll搭载"></a>❀利用kekyll搭载</h2><h3 id="关于这部分的搭载问题很多：直接通过源码安装问题很多，常见报错："><a href="#关于这部分的搭载问题很多：直接通过源码安装问题很多，常见报错：" class="headerlink" title="关于这部分的搭载问题很多：直接通过源码安装问题很多，常见报错："></a>关于这部分的搭载问题很多：直接通过源码安装问题很多，常见报错：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">报错，内容：ruby-2.7.0/lib/rubygems/core_ext/kernel_require.rb:92:in &#x27;require&#x27;: cannot load such file -- openssl (LoadError)</span><br></pre></td></tr></table></figure>
+<p>重新装了openssl但还是没有解决问题，好在参考了第三篇博文，发现了相同问题利用rvm安装ruby解决</p>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><h4 id="1-安装rvm，bundler"><a href="#1-安装rvm，bundler" class="headerlink" title="1.安装rvm，bundler"></a>1.安装rvm，bundler</h4><p>@<a target="_blank" rel="noopener" href="http://sayaku.github.io/blog/2016/05/05/rubyde-rvm-gem-bundler/">http://sayaku.github.io/blog/2016/05/05/rubyde-rvm-gem-bundler/</a></p>
+<h4 id="2-安装rvm，升级ruby"><a href="#2-安装rvm，升级ruby" class="headerlink" title="2.安装rvm，升级ruby"></a>2.安装rvm，升级ruby</h4><p>@<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/12d3226d83ee">https://www.jianshu.com/p/12d3226d83ee</a></p>
+<h4 id="3-源码安装ruby跳坑换用rvm安装"><a href="#3-源码安装ruby跳坑换用rvm安装" class="headerlink" title="3.源码安装ruby跳坑换用rvm安装"></a>3.源码安装ruby跳坑换用rvm安装</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/kingdvc/article/details/39437683">https://blog.csdn.net/kingdvc/article/details/39437683</a><br>@<a target="_blank" rel="noopener" href="https://blog.csdn.net/devshilei/article/details/103929290">https://blog.csdn.net/devshilei/article/details/103929290</a><br><a target="_blank" rel="noopener" href="https://blog.hotwill.cn/Ubuntu%E5%AE%89%E8%A3%85ruby-%E4%BD%BF%E7%94%A8RVM.html">https://blog.hotwill.cn/Ubuntu%E5%AE%89%E8%A3%85ruby-%E4%BD%BF%E7%94%A8RVM.html</a></p>
+<h4 id="4-Jekyll-安装"><a href="#4-Jekyll-安装" class="headerlink" title="4.Jekyll 安装"></a>4.Jekyll 安装</h4><p>@<a target="_blank" rel="noopener" href="http://jekyllcn.com/">http://jekyllcn.com/</a></p>
+<h4 id="5-gpg入门生成密钥"><a href="#5-gpg入门生成密钥" class="headerlink" title="5.gpg入门生成密钥"></a>5.gpg入门生成密钥</h4><p>@<a target="_blank" rel="noopener" href="https://ruanyifeng.com/blog/2013/07/gpg.html">https://ruanyifeng.com/blog/2013/07/gpg.html</a></p>
+<h3 id="准备：rvm安装，ruby安装，bundler安装和jekyll安装"><a href="#准备：rvm安装，ruby安装，bundler安装和jekyll安装" class="headerlink" title="准备：rvm安装，ruby安装，bundler安装和jekyll安装"></a>准备：rvm安装，ruby安装，bundler安装和jekyll安装</h3><h3 id="1）安装rvm："><a href="#1）安装rvm：" class="headerlink" title="1）安装rvm："></a>1）安装rvm：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 #这里的密钥可参考5密钥生成</span><br><span class="line">$ \curl -sSL https://get.rvm.io | bash -s stable #下载rvm</span><br><span class="line">$ source ~/.bashrc</span><br><span class="line">$ source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>修改 RVM 的 Ruby 安装源到 Ruby China 的 Ruby 镜像服务器，这样能提高安装速度:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;ruby_url=https://cache.ruby-china.org/pub/ruby&quot; &gt; ~/.rvm/user/db</span><br></pre></td></tr></table></figure>
+<h3 id="2）安装ruby和版本切换："><a href="#2）安装ruby和版本切换：" class="headerlink" title="2）安装ruby和版本切换："></a>2）安装ruby和版本切换：</h3><p>列出可以安装的Ruby版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ rvm list known</span><br><span class="line">安装某个版本的Ruby</span><br><span class="line"></span><br><span class="line">$ rvm install 2.3.0</span><br><span class="line">这里安装了最新的 2.3.0, rvm list known 列表里面的都可以拿来安装。</span><br><span class="line"></span><br><span class="line">切换Ruby版本</span><br><span class="line"></span><br><span class="line">$ rvm use 2.3.0</span><br><span class="line">将Ruby版本切换到2.3.0</span><br><span class="line"></span><br><span class="line">设置默认的Ruby版本</span><br><span class="line"></span><br><span class="line">$ rvm use 2.3.0 --default</span><br><span class="line">这样系统中的Ruby版本就被设置为了2.3.0</span><br></pre></td></tr></table></figure>
+<p>更详细的教程可以参考ruby-china的这篇教程：@<a target="_blank" rel="noopener" href="https://ruby-china.org/wiki/rvm-guide">https://ruby-china.org/wiki/rvm-guide</a></p>
+<h3 id="3-安装libssl-dev包"><a href="#3-安装libssl-dev包" class="headerlink" title="3)安装libssl-dev包:"></a>3)安装libssl-dev包:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">安装aptitude：sudo apt-get install aptitude</span><br><span class="line">通过aptitude安装libssl-dev：sudo aptitude install libssl-dev，期间会提示是否要应用方案以及是否要调低版本，总的过程需要做的操作是：分别输入 n（不选默认方案）y（降低版本）y（确定），完成之后可以用dpkg -l *libssl*查看安装情况</span><br></pre></td></tr></table></figure>
+<h4 id="Tips-最好先安装libssl包"><a href="#Tips-最好先安装libssl包" class="headerlink" title="Tips:最好先安装libssl包"></a>Tips:最好先安装libssl包</h4><h4 id="3）安装gem-bundle："><a href="#3）安装gem-bundle：" class="headerlink" title="3）安装gem,bundle："></a>3）安装gem,bundle：</h4><p>@<a target="_blank" rel="noopener" href="http://sayaku.github.io/blog/2016/05/05/rubyde-rvm-gem-bundler/">http://sayaku.github.io/blog/2016/05/05/rubyde-rvm-gem-bundler/</a><br>@<a target="_blank" rel="noopener" href="https://cndaqiang.github.io/2020/04/18/ruby/">https://cndaqiang.github.io/2020/04/18/ruby/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gem install rails  </span><br><span class="line">gem install bundler #利用gem安装bundler</span><br><span class="line">bundle init #生成Gemfile</span><br><span class="line">bundle install #按照Gemfile 所定义的套件下载，再把套件的版本放置到Gemfile.lock存起来</span><br></pre></td></tr></table></figure>
+<h4 id="4）安装jekyll"><a href="#4）安装jekyll" class="headerlink" title="4）安装jekyll"></a>4）安装jekyll</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  gem install jekyll bundler</span><br><span class="line"></span><br><span class="line">  jekyll new my-awesome-site</span><br><span class="line"></span><br><span class="line">  cd my-awesome-site</span><br><span class="line"></span><br><span class="line">  bundle install</span><br><span class="line"></span><br><span class="line">  bundle exec jekyll serve</span><br><span class="line"></span><br><span class="line"># =&gt; 打开浏览器 http://localhost:400</span><br></pre></td></tr></table></figure>
+
+
+
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/qe/" class="">
-              qe
+            <a href="/tags/others/" class="">
+              others
             </a>
           
         </div>
@@ -470,7 +504,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2021/12/30/设置材料晶格常数/" target="_blank" title="设置晶格常数">http://example.com/2021/12/30/设置材料晶格常数/</a>
+    <a href="/2021/12/30/搭载静态博客网站/" target="_blank" title="搭载静态博客网站">http://example.com/2021/12/30/搭载静态博客网站/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -492,38 +526,21 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/15.jpg" class="lazyload placeholder" data-srcset="/medias/15.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+      <img class="lazyload lazyload placeholder" src="/medias/29.jpg" class="lazyload placeholder" data-srcset="/medias/29.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
     </div>
-    <a href="/2021/12/30/%E8%AE%A1%E7%AE%97%E7%A3%81%E6%80%A7/" class="post-nav-link">
+    <a href="/2021/12/30/%E8%AE%BE%E7%BD%AE%E6%9D%90%E6%96%99%E6%99%B6%E6%A0%BC%E5%B8%B8%E6%95%B0/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">QE计算磁性</div>
+        <div class="title-text">设置晶格常数</div>
       </div>
       
       <!-- <div class="content">
-        关于计算材料的磁性注意事项：对称性的tag：nosym（空间对称性）noinv（时间对称性）no_t_rev=.True
+        设置结构常数信息计算需要知道：原胞尺寸，原子坐标和晶格常数(这些从实验**文献中获得 或者COD数据库@http://w
       </div> -->
     </a>
   </div>
 
 
-
-  
-  <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/9.jpg" class="lazyload placeholder" data-srcset="/medias/9.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
-    </div>
-    <a href="/2021/12/30/%E6%90%AD%E8%BD%BD%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" class="post-nav-link">
-      <div class="title">
-        Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">搭载静态博客网站</div>
-      </div>
-      <!-- <div class="content">
-        将纯文本转换位静态博客网站我自己的blog @https://nawu97.github.io/ 主要是利用hexo搭载
-      </div> -->
-    </a>
-  </div>
 
 </div>
 
