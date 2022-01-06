@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>MoS2后处理脚本-计算磁矩 | NaWu</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+    <script>
+        var themeModelId = '';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head>
+
+  
+  <!-- 依赖于jquery和vue -->
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+  
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
+
+  
+  
+  <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+<div id='loader'>
+  <link rel="stylesheet" href="/js/loaded/index.css" >
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="configure-border-1">
+      <div class="configure-core"></div>
+    </div>
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
+    </div>
+    <div class="loading-word">loading...</div>
+  </div>
+</div>
+
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+  
+</script>
+
+    
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header   " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <h3 class="drawer-box-head_title">NaWu</h3>
+      <h5 class="drawer-box-head_desc">Welcome to NaWu&#39;s blog!</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://github.com/nawu97">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">NaWu</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/nawu97" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('/medias/23.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        MoS2后处理脚本-计算磁矩
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2021-12-30 |
+        </span>
+      
+
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="已知：该脚本是针对MoS2中991的k-mesh来展开的，主要K谷和K’谷刚好在第31和61个k点处，可在MoS2-scf-crystal-KP中对应查看位置坐标"><a href="#已知：该脚本是针对MoS2中991的k-mesh来展开的，主要K谷和K’谷刚好在第31和61个k点处，可在MoS2-scf-crystal-KP中对应查看位置坐标" class="headerlink" title="已知：该脚本是针对MoS2中991的k-mesh来展开的，主要K谷和K’谷刚好在第31和61个k点处，可在MoS2_scf.crystal.KP中对应查看位置坐标"></a>已知：该脚本是针对MoS2中9<em>9</em>1的k-mesh来展开的，主要K谷和K’谷刚好在第31和61个k点处，可在<code>MoS2_scf.crystal.KP</code>中对应查看位置坐标</h1><h1 id="1-处理统计总磁矩"><a href="#1-处理统计总磁矩" class="headerlink" title="1.处理统计总磁矩"></a>1.处理统计总磁矩</h1><h2 id="用法：将文件x-y-z方向的磁矩存在mag-raw-txt文件中，然后用下面脚本进行处理"><a href="#用法：将文件x-y-z方向的磁矩存在mag-raw-txt文件中，然后用下面脚本进行处理" class="headerlink" title="用法：将文件x,y,z方向的磁矩存在mag-raw.txt文件中，然后用下面脚本进行处理"></a>用法：将文件x,y,z方向的磁矩存在mag-raw.txt文件中，然后用下面脚本进行处理</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">#-*-coding=utf-8-*-</span><br><span class="line">#Usage:提前准备一个mag.txt存放关于体系计算得到的总磁矩（x,y,z方向，依次从第二列开始），第一列为标定的时间</span><br><span class="line">from numpy import *</span><br><span class="line">import numpy as np</span><br><span class="line">import scipy</span><br><span class="line">from scipy.integrate import simps</span><br><span class="line">from sympy import integrate,symbols</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from scipy.optimize import curve_fit</span><br><span class="line">from matplotlib.pyplot import MultipleLocator</span><br><span class="line">#MultipleLocator设置刻度间隔</span><br><span class="line"></span><br><span class="line">with open(&quot;C:\\Users\\14618\\Desktop\\mag-raw.txt&quot;,&#x27;r&#x27;,encoding=&#x27;UTF-8&#x27;)as f:</span><br><span class="line">    with open(&quot;C:\\Users\\14618\\Desktop\\pos.txt&quot;, &#x27;r&#x27;, encoding=&#x27;UTF-8&#x27;)as f1:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        filelist=f.readlines()</span><br><span class="line"></span><br><span class="line">        filelist_new = np.array(filelist)  # 转换成 array类型</span><br><span class="line">        num_array = filelist_new.size  # 整个文件fx的行数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#振动</span><br><span class="line">        filelist1=f1.readlines()</span><br><span class="line">        filelist_new1 = np.array(filelist1)  # 转换成 array类型</span><br><span class="line">        num_array1 = filelist_new1.size  # 整个文件fx的行数</span><br><span class="line"></span><br><span class="line">#print(&#x27;步数：&#x27;,num_array)</span><br><span class="line">    To_mat = zeros((num_array, 3))</span><br><span class="line">    index = 0</span><br><span class="line">    for line in filelist_new:</span><br><span class="line">        x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">        To_mat[index:] = x[0:3]</span><br><span class="line">        index += 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    To_mat1 = zeros((len(filelist_new), 3))</span><br><span class="line">    print(len(To_mat1))</span><br><span class="line">    index = 0</span><br><span class="line">    for line in filelist_new1:</span><br><span class="line">        x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">        To_mat1[index:] = x[0:3]</span><br><span class="line">        index += 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    y=0.05*To_mat1[:,1] #平衡位置在0.6</span><br><span class="line">#To_mat1声子振动 To_mat 磁矩</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#print(delta_t)</span><br><span class="line">    Sx=To_mat[:,0]</span><br><span class="line">    Sy=To_mat[:,1]</span><br><span class="line">    Sz=To_mat[:,2]</span><br><span class="line"></span><br><span class="line">    step=np.linspace(1,num_array,num_array)</span><br><span class="line">    x=15*0.048375*step</span><br><span class="line">    T=step</span><br><span class="line">print(x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#定义一个拟合函数</span><br><span class="line">def func(x, a, b, c):</span><br><span class="line">    return a * np.exp(-b * x) + c</span><br><span class="line"></span><br><span class="line">figure=plt.figure()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">plt.plot(x[1:]-x[0],Sz[1:]-Sz[1],&#x27;b-&#x27;,label=&#x27;z direction&#x27;)</span><br><span class="line">plt.plot(x[1:]-x[0],Sy[1:]-Sy[1],&#x27;r-&#x27;,label=&#x27;y direction&#x27;)</span><br><span class="line">plt.plot(x[1:]-x[0],Sx[1:]-Sx[0],&#x27;k-&#x27;,label=&#x27;x direction&#x27;)</span><br><span class="line">plt.plot(x,y,&#x27;g--&#x27;,lw=0.2)</span><br><span class="line">#plt.plot(x, func(x, *popt_z), &#x27;b--&#x27;,label=&#x27;fit: a=%5.3f, b=%5.3f, c=%5.3f&#x27; % tuple(popt_z))</span><br><span class="line">#</span><br><span class="line"># #plt.plot(x,0.004*sin(0.051699*x),&#x27;g--&#x27;,lw=1)</span><br><span class="line">plt.xlabel(&#x27;Time(fs)&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Total magnetization(Bohr mag/cell)&#x27;)</span><br><span class="line">plt.title(&#x27;Magnetization-total&#x27;)</span><br><span class="line">y_major_locator=MultipleLocator(0.005)</span><br><span class="line">ax=plt.gca() #获取当前轴</span><br><span class="line">ax.yaxis.set_major_locator(y_major_locator) #设置间隔</span><br><span class="line">plt.xlim([0,300])</span><br><span class="line">plt.ylim([-0.016,0.0086])</span><br><span class="line">plt.legend(loc=1)</span><br><span class="line">plt.axhline(y=0,ls=&#x27;--&#x27;,lw=1,c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=121.53398,ls=&#x27;-&#x27;,lw=0.5,c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=243.06796,ls=&#x27;-&#x27;,lw=0.5,c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=60.76699,ls=&#x27;-&#x27;,lw=0.5,c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=182.30097,ls=&#x27;-&#x27;,lw=0.5,c=&#x27;#808080&#x27;)</span><br><span class="line">plt.show()</span><br><span class="line">figure.savefig(fname=&quot;C:\\Users\\14618\\Desktop\\figure-total.jpg&quot;,dpi=500)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f1.close()</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="2-处理统计平均磁矩"><a href="#2-处理统计平均磁矩" class="headerlink" title="2.处理统计平均磁矩"></a>2.处理统计平均磁矩</h1><h2 id="用法：将文件x-y-z方向的磁矩存在mag-K-txt文件中，然后用下面脚本进行处理-由于实验要求不同，常用的求平均值法也不同，即所研究的区间段不同"><a href="#用法：将文件x-y-z方向的磁矩存在mag-K-txt文件中，然后用下面脚本进行处理-由于实验要求不同，常用的求平均值法也不同，即所研究的区间段不同" class="headerlink" title="用法：将文件x,y,z方向的磁矩存在mag-K.txt文件中，然后用下面脚本进行处理(由于实验要求不同，常用的求平均值法也不同，即所研究的区间段不同)"></a>用法：将文件x,y,z方向的磁矩存在mag-K.txt文件中，然后用下面脚本进行处理(由于实验要求不同，常用的求平均值法也不同，即所研究的区间段不同)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line">#-*-coding=utf-8-*-</span><br><span class="line">#Usage:提前准备一个mag.txt存放关于体系计算得到的总磁矩（x,y,z方向，依次从第二列开始），第一列为标定的时间</span><br><span class="line">from numpy import *</span><br><span class="line">import numpy as np</span><br><span class="line">import scipy</span><br><span class="line">from scipy.integrate import simps</span><br><span class="line">from sympy import integrate,symbols</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from scipy.optimize import curve_fit</span><br><span class="line"></span><br><span class="line">with open(&quot;C:\\Users\\14618\\Desktop\\0\\mag-raw.txt&quot;,&#x27;r&#x27;,encoding=&#x27;UTF-8&#x27;)as f:</span><br><span class="line">    with open(&quot;C:\\Users\\14618\\Desktop\\0\\pos.txt&quot;, &#x27;r&#x27;, encoding=&#x27;UTF-8&#x27;)as f1:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        filelist=f.readlines()</span><br><span class="line"></span><br><span class="line">        filelist_new = np.array(filelist)  # 转换成 array类型</span><br><span class="line">        num_array = filelist_new.size  # 整个文件fx的行数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#振动</span><br><span class="line">        filelist1=f1.readlines()</span><br><span class="line">        filelist_new1 = np.array(filelist1)  # 转换成 array类型</span><br><span class="line">        num_array1 = filelist_new1.size  # 整个文件fx的行数</span><br><span class="line"></span><br><span class="line">#print(&#x27;步数：&#x27;,num_array)</span><br><span class="line">    To_mat = zeros((num_array, 3))</span><br><span class="line">    index = 0</span><br><span class="line">    for line in filelist_new:</span><br><span class="line">        x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">        To_mat[index:] = x[0:3]</span><br><span class="line">        index += 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    To_mat1 = zeros((len(filelist_new), 3))</span><br><span class="line">    print(len(To_mat1))</span><br><span class="line">    index = 0</span><br><span class="line">    for line in filelist_new1:</span><br><span class="line">        x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">        To_mat1[index:] = x[0:3]</span><br><span class="line">        index += 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    y=0.05*To_mat1[:,1] #平衡位置在0.6</span><br><span class="line">#To_mat1声子振动 To_mat 磁矩</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#print(delta_t)</span><br><span class="line">    Sx=To_mat[:,0]</span><br><span class="line">    Sy=To_mat[:,1]</span><br><span class="line">    Sz=To_mat[:,2]</span><br><span class="line"></span><br><span class="line">    step=np.linspace(2,420,419)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    T=step-1</span><br><span class="line">    x = 15 * 0.048375 * T</span><br><span class="line">print(x)</span><br><span class="line"></span><br><span class="line">#定义</span><br><span class="line">sum_up_z=[]</span><br><span class="line">Sz_avg=[]</span><br><span class="line">sum_up_y=[]</span><br><span class="line">Sy_avg=[]</span><br><span class="line">sum_up_x=[]</span><br><span class="line">Sx_avg=[]</span><br><span class="line">for i in range(len(Sz)):</span><br><span class="line">    sum_up_z.append(np.sum(Sz[:i+1]))</span><br><span class="line">    sum_up_y.append(np.sum(Sy[:i+1]))</span><br><span class="line">    sum_up_x.append(np.sum(Sx[:i+1]))</span><br><span class="line"></span><br><span class="line">Sz_avg=np.divide(sum_up_z[1:], T)</span><br><span class="line">Sy_avg=np.divide(sum_up_y[1:], T)</span><br><span class="line">Sx_avg=np.divide(sum_up_x[1:], T)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#定义一个拟合函数</span><br><span class="line">def func(x, a, b, c):</span><br><span class="line">    return a * np.exp(-b * x) + c</span><br><span class="line">sigma=np.ones(len(x))</span><br><span class="line">sigma[[0]]=0.01 #设置第一个点的权重，让其通过</span><br><span class="line"></span><br><span class="line">c=Sz_avg-Sz_avg[0]</span><br><span class="line">b=Sy_avg-Sy_avg[0]</span><br><span class="line">a=Sx_avg-Sx_avg[0]</span><br><span class="line"></span><br><span class="line">#popt_z, pcov_z = curve_fit(func,x,c,sigma=sigma)</span><br><span class="line"># popt_y, pcov_y = curve_fit(func,x,b)</span><br><span class="line"># popt_x, pcov_x = curve_fit(func,x,a)</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">figure=plt.figure()</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">plt.plot(x,c,&#x27;b-&#x27;,label=&#x27;z direction&#x27;)</span><br><span class="line">plt.plot(x,b,&#x27;r-&#x27;,label=&#x27;y direction&#x27;)</span><br><span class="line">plt.plot(x,a,&#x27;k-&#x27;,label=&#x27;x direction&#x27;)</span><br><span class="line">plt.plot(x,y[1:]-y[0],&#x27;g--&#x27;,lw=0.2)</span><br><span class="line">#plt.plot(x, func(x, *popt_z), &#x27;b--&#x27;,label=&#x27;fit: a=%5.3f, b=%5.3f, c=%5.3f&#x27; % tuple(popt_z))</span><br><span class="line">#</span><br><span class="line"># #plt.plot(x,0.004*sin(0.051699*x),&#x27;g--&#x27;,lw=1)</span><br><span class="line">plt.xlabel(&#x27;Time(fs)&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Total magnetization(Bohr mag/cell)&#x27;)</span><br><span class="line">plt.title(&#x27;Magnetization-average&#x27;)</span><br><span class="line">plt.xlim([0,300])</span><br><span class="line">plt.legend(loc=1)</span><br><span class="line">plt.axhline(y=0,ls=&#x27;--&#x27;,lw=1,c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=121.53398,ls=&#x27;-&#x27;,lw=0.5,c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=243.06796,ls=&#x27;-&#x27;,lw=0.5,c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=60.76699,ls=&#x27;-&#x27;,lw=0.5,c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=182.30097,ls=&#x27;-&#x27;,lw=0.5,c=&#x27;#808080&#x27;)</span><br><span class="line">plt.show()</span><br><span class="line">figure.savefig(fname=&quot;C:\\Users\\14618\\Desktop\\figure-new.jpg&quot;,dpi=500)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f1.close()</span><br><span class="line">f.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="3-处理统计总占据数"><a href="#3-处理统计总占据数" class="headerlink" title="3.处理统计总占据数"></a>3.处理统计总占据数</h1><h2 id="用法：将文件x-y-z方向的磁矩存在k-txt文件中，然后用下面脚本进行处理"><a href="#用法：将文件x-y-z方向的磁矩存在k-txt文件中，然后用下面脚本进行处理" class="headerlink" title="用法：将文件x,y,z方向的磁矩存在k.txt文件中，然后用下面脚本进行处理"></a>用法：将文件x,y,z方向的磁矩存在k.txt文件中，然后用下面脚本进行处理</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">#-*-coding=utf-8-*-</span><br><span class="line">#Usage:提前准备一个文件，存放各个态的信息,现在这个文件就是为了提取K谷处的态的占据数</span><br><span class="line">from numpy import *</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">with open(&quot;C:\\Users\\14618\\Desktop\\k.txt&quot;,&#x27;r&#x27;,encoding=&#x27;UTF-8&#x27;)as f:</span><br><span class="line">    with open(&quot;C:\\Users\\14618\\Desktop\\pos.txt&quot;, &#x27;r&#x27;, encoding=&#x27;UTF-8&#x27;)as f1:</span><br><span class="line">        filelist=f.readlines()</span><br><span class="line"></span><br><span class="line">        filelist_new = np.array(filelist)  # 转换成 array类型</span><br><span class="line">        num_array = filelist_new.size  # 整个文件fx的行数</span><br><span class="line">        #print(&#x27;整个文件f数据部分的行数:&#x27;, filelist[0])</span><br><span class="line">        important_K=[]</span><br><span class="line">        for i in range(1,421):</span><br><span class="line">            important_K.append(filelist[82*i-52])</span><br><span class="line">            i+=1</span><br><span class="line"></span><br><span class="line">        To_mat_K = zeros((len(important_K), 4))</span><br><span class="line">        index = 0</span><br><span class="line">        for line in important_K:</span><br><span class="line">            x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">            To_mat_K[index:] = x[0:4]</span><br><span class="line">            index += 1</span><br><span class="line">        print(To_mat_K)</span><br><span class="line">        filelist1 = f1.readlines()</span><br><span class="line">        filelist_new1 = np.array(filelist1)  # 转换成 array类型</span><br><span class="line">        num_array1 = filelist_new1.size  # 整个文件fx的行数</span><br><span class="line"></span><br><span class="line">        To_mat1 = zeros((len(filelist_new1), 3))</span><br><span class="line">        print(len(To_mat1))</span><br><span class="line">        index = 0</span><br><span class="line">        for line in filelist_new1:</span><br><span class="line">            x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">            To_mat1[index:] = x[0:3]</span><br><span class="line">            index += 1</span><br><span class="line"></span><br><span class="line">    #把提取到的占据态的信息储存在2.txt</span><br><span class="line">    np.savetxt(&quot;C:\\Users\\14618\\Desktop\\occ-k.txt&quot;,To_mat_K, delimiter=&#x27;  &#x27;,header=&#x27;整理&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    step = np.linspace(1, 420, 420)</span><br><span class="line">    x = 15 * 0.048375 * step</span><br><span class="line">    y = 3*To_mat1[:, 1]</span><br><span class="line"></span><br><span class="line">    CM1=To_mat_K[:,2]</span><br><span class="line">    CM2=To_mat_K[:,3]</span><br><span class="line">    print(CM1)</span><br><span class="line">    # 画图</span><br><span class="line">    figure = plt.figure()</span><br><span class="line"></span><br><span class="line">    #plt.plot(x, To_mat_K[:,0], &#x27;b-&#x27;, label=&#x27;VM1&#x27;)</span><br><span class="line">    #plt.plot(x, To_mat_K[:,1], &#x27;r-&#x27;, label=&#x27;VM2&#x27;)</span><br><span class="line">    plt.plot(x[1:],CM1[1:],&#x27;b-&#x27;, label=&#x27;CM2&#x27;)</span><br><span class="line">    plt.plot(x[1:],CM2[1:],&#x27;r-&#x27;, label=&#x27;CM1&#x27;)#自洽</span><br><span class="line">    # plt.plot(x, CM1, &#x27;b-&#x27;, label=&#x27;CM1&#x27;)</span><br><span class="line">    # plt.plot(x, CM2, &#x27;r-&#x27;, label=&#x27;CM2&#x27;)</span><br><span class="line">    plt.plot(x, y[1:]-y[0], &#x27;g--&#x27;, lw=0.5)</span><br><span class="line">    #plt.plot(x, 0.2 * sin(0.051699 * x), &#x27;g--&#x27;, lw=1)</span><br><span class="line">    plt.xlabel(&#x27;Time(fs)&#x27;)</span><br><span class="line">    plt.ylabel(&#x27;Occupations&#x27;)</span><br><span class="line">    plt.title(&#x27;Occupations-Time&#x27;)</span><br><span class="line">    plt.xlim([0, 300])</span><br><span class="line">    plt.legend(loc=1)</span><br><span class="line">    plt.axhline(y=0, ls=&#x27;--&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line">    plt.axvline(x=121.53398, ls=&#x27;-&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line">    plt.axvline(x=243.06796, ls=&#x27;-&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line">    plt.axvline(x=60.76699, ls=&#x27;-&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line">    plt.axvline(x=182.30097, ls=&#x27;-&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line"></span><br><span class="line">    plt.show()</span><br><span class="line">    figure.savefig(fname=&quot;C:\\Users\\14618\\Desktop\\figure.jpg&quot;, dpi=500)</span><br><span class="line">    f.close()</span><br><span class="line">    f1.close()</span><br></pre></td></tr></table></figure>
+<h1 id="4-处理统计平均占据数"><a href="#4-处理统计平均占据数" class="headerlink" title="4.处理统计平均占据数"></a>4.处理统计平均占据数</h1><h2 id="用法：将文件x-y-z方向的占据数存在K-txt文件中，然后用下面脚本进行处理-由于实验要求不同，常用的求平均值法也不同，即所研究的区间段不同"><a href="#用法：将文件x-y-z方向的占据数存在K-txt文件中，然后用下面脚本进行处理-由于实验要求不同，常用的求平均值法也不同，即所研究的区间段不同" class="headerlink" title="用法：将文件x,y,z方向的占据数存在K.txt文件中，然后用下面脚本进行处理(由于实验要求不同，常用的求平均值法也不同，即所研究的区间段不同)"></a>用法：将文件x,y,z方向的占据数存在K.txt文件中，然后用下面脚本进行处理(由于实验要求不同，常用的求平均值法也不同，即所研究的区间段不同)</h2><p>在k谷处的占据数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"># -*-coding=utf-8-*-</span><br><span class="line"># Usage:提前准备一个文件，存放各个态的信息,现在这个文件就是为了提取K谷处的态的占据数</span><br><span class="line">#pos 记得提前去掉两行</span><br><span class="line">from numpy import *</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from scipy.optimize import curve_fit</span><br><span class="line"></span><br><span class="line">with open(&quot;C:\\Users\\14618\\Desktop\\0\\k.txt&quot;, &#x27;r&#x27;, encoding=&#x27;UTF-8&#x27;)as f:</span><br><span class="line">    with open(&quot;C:\\Users\\14618\\Desktop\\0\\pos.txt&quot;, &#x27;r&#x27;, encoding=&#x27;UTF-8&#x27;)as f1:</span><br><span class="line">        filelist = f.readlines()</span><br><span class="line">        filelist_new = np.array(filelist)  # 转换成 array类型</span><br><span class="line">        num_array = filelist_new.size  # 整个文件fx的行数</span><br><span class="line"></span><br><span class="line">        filelist1 = f1.readlines()</span><br><span class="line">        filelist_new1 = np.array(filelist1)  # 转换成 array类型</span><br><span class="line">        num_array1 = filelist_new1.size  # 整个文件fx的行数</span><br><span class="line"></span><br><span class="line">    # print(&#x27;整个文件f数据部分的行数:&#x27;, filelist[0])</span><br><span class="line">        important_K = []</span><br><span class="line">        for i in range(1, 421):</span><br><span class="line">            important_K.append(filelist[82 * i - 52])</span><br><span class="line">            i += 1</span><br><span class="line">    # print(important[-1])</span><br><span class="line">            To_mat_K = zeros((len(important_K), 4))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        index = 0</span><br><span class="line">        for line in important_K:</span><br><span class="line">            x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">            To_mat_K[index:] = x[0:4]</span><br><span class="line">            index += 1</span><br><span class="line">    #print(To_mat_K)</span><br><span class="line">    # 把提取到的占据态的信息To_mat_K储存在2.txt</span><br><span class="line">        To_mat1 = zeros((len(filelist_new1), 3))</span><br><span class="line">        print(len(To_mat1))</span><br><span class="line">        index = 0</span><br><span class="line">        for line in filelist_new1:</span><br><span class="line">            x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">            To_mat1[index:] = x[0:3]</span><br><span class="line">            index += 1</span><br><span class="line">    # print(To_mat)</span><br><span class="line"></span><br><span class="line">        steps = np.linspace(1, num_array-1, num_array-1)</span><br><span class="line">        x = 15 * 0.048375 * steps</span><br><span class="line">        y = 6*To_mat1[:, 1]</span><br><span class="line">        np.savetxt(&quot;C:\\Users\\14618\\Desktop\\occ-k.txt&quot;, To_mat_K, delimiter=&#x27;  &#x27;, header=&#x27;整理&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CM1_raw=To_mat_K[:, 2]</span><br><span class="line">CM2_raw=To_mat_K[:, 3]</span><br><span class="line">CM1=CM1_raw[1:]</span><br><span class="line">CM2=CM2_raw[1:]</span><br><span class="line"></span><br><span class="line">print(&#x27;CM1&#x27;,CM1)</span><br><span class="line">#求平均</span><br><span class="line">CM1_sum = []</span><br><span class="line">CM1_avg = []</span><br><span class="line">CM2_sum = []</span><br><span class="line">CM2_avg = []</span><br><span class="line"></span><br><span class="line">for i in range(0,len(CM1)):</span><br><span class="line">    CM1_sum.append(np.sum(CM1[:i + 1]))</span><br><span class="line">    CM2_sum.append(np.sum(CM2[:i + 1]))</span><br><span class="line"></span><br><span class="line">print(&#x27;CM1_sum&#x27;,CM1_sum)</span><br><span class="line">print(&#x27;CM2_sum&#x27;,CM2_sum)</span><br><span class="line"></span><br><span class="line">step=np.linspace(1,419,419)</span><br><span class="line"></span><br><span class="line">CM1_avg = np.divide(CM1_sum,step)</span><br><span class="line">CM2_avg = np.divide(CM2_sum,step)</span><br><span class="line"></span><br><span class="line">print(&#x27;CM1_avg&#x27;,CM1_avg)</span><br><span class="line">print(&#x27;CM2_avg&#x27;,CM2_avg)</span><br><span class="line">#去掉列表里的第一个数</span><br><span class="line">print(&#x27;len&#x27;,len(CM1_avg))</span><br><span class="line"></span><br><span class="line">x=15*0.048378*step</span><br><span class="line">#</span><br><span class="line"># #拟合</span><br><span class="line">def func1(x, a, b, c):</span><br><span class="line">    return a * np.exp(-b * x) + c</span><br><span class="line">def func2(x, a, b, c):</span><br><span class="line">    return -a * np.exp(-b * x) + c</span><br><span class="line">sigma=np.ones(len(x))</span><br><span class="line">sigma[[0]]=0.01 #设置第一个点的权重，让其通过</span><br><span class="line"></span><br><span class="line">#popt_CM1, pcov_CM1 = curve_fit(func1,x,CM1_avg,sigma=sigma)</span><br><span class="line">#popt_CM2, pcov_CM2 = curve_fit(func2,x,CM2_avg,sigma=sigma)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # 画图</span><br><span class="line">figure = plt.figure()</span><br><span class="line"></span><br><span class="line">    #plt.plot(x, To_mat_K[:, 0], &#x27;b-&#x27;, label=&#x27;VM1&#x27;)</span><br><span class="line">    #plt.plot(x, To_mat_K[:, 1], &#x27;r-&#x27;, label=&#x27;VM2&#x27;)</span><br><span class="line">plt.plot(x,CM2_avg, &#x27;r-&#x27;, label=&#x27;CM1&#x27;)</span><br><span class="line">plt.plot(x,CM1_avg, &#x27;b-&#x27;, label=&#x27;CM2&#x27;) #出现能级交叉，因此这里更改了Label</span><br><span class="line"></span><br><span class="line">#plt.plot(x, func2(x, *popt_CM2), &#x27;r--&#x27;,</span><br><span class="line">#label=&#x27;fit: a=-%5.3f, b=%5.3f, c=%5.3f&#x27; % tuple(popt_CM2))</span><br><span class="line">#plt.plot(x, func1(x, *popt_CM1), &#x27;b--&#x27;,</span><br><span class="line">#label=&#x27;fit: a=%5.3f, b=%5.3f, c=%5.3f&#x27; % tuple(popt_CM1))</span><br><span class="line">print(x)</span><br><span class="line">print(len(y))</span><br><span class="line">plt.plot(x,y[2:]-y[2],&#x27;g--&#x27;,lw=0.5)</span><br><span class="line">#plt.plot(x, 0.2 * sin(0.051699 * x), &#x27;g--&#x27;, lw=1)</span><br><span class="line">plt.xlabel(&#x27;Time(fs)&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Occupations&#x27;)</span><br><span class="line">plt.title(&#x27;Occupations_Average-Time&#x27;)</span><br><span class="line">plt.xlim([0, 300])</span><br><span class="line">plt.legend(loc=1)</span><br><span class="line">plt.axhline(y=0, ls=&#x27;--&#x27;, lw=0.2, c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=121.53398, ls=&#x27;--&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=243.06796, ls=&#x27;--&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=60.76699, ls=&#x27;--&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=182.30097, ls=&#x27;--&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br><span class="line">figure.savefig(fname=&quot;C:\\Users\\14618\\Desktop\\figure.jpg&quot;, dpi=500)</span><br><span class="line"></span><br><span class="line">f.close()</span><br><span class="line">f1.close()</span><br></pre></td></tr></table></figure>
+<p>在k’谷处的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"># -*-coding=utf-8-*-</span><br><span class="line"># Usage:提前准备一个文件，存放各个态的信息,现在这个文件就是为了提取K谷处的态的占据数</span><br><span class="line">#pos 记得提前去掉两行</span><br><span class="line">from numpy import *</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from scipy.optimize import curve_fit</span><br><span class="line"></span><br><span class="line">with open(&quot;C:\\Users\\14618\\Desktop\\k&#x27;.txt&quot;, &#x27;r&#x27;, encoding=&#x27;UTF-8&#x27;)as f:</span><br><span class="line">    with open(&quot;C:\\Users\\14618\\Desktop\\pos.txt&quot;, &#x27;r&#x27;, encoding=&#x27;UTF-8&#x27;)as f1:</span><br><span class="line">        filelist = f.readlines()</span><br><span class="line">        filelist_new = np.array(filelist)  # 转换成 array类型</span><br><span class="line">        num_array = filelist_new.size  # 整个文件fx的行数</span><br><span class="line"></span><br><span class="line">        filelist1 = f1.readlines()</span><br><span class="line">        filelist_new1 = np.array(filelist1)  # 转换成 array类型</span><br><span class="line">        num_array1 = filelist_new1.size  # 整个文件fx的行数</span><br><span class="line"></span><br><span class="line">    # print(&#x27;整个文件f数据部分的行数:&#x27;, filelist[0])</span><br><span class="line">        important_K = []</span><br><span class="line">        for i in range(1, 421):</span><br><span class="line">            important_K.append(filelist[82 * i - 22])</span><br><span class="line">            i += 1</span><br><span class="line">    # print(important[-1])</span><br><span class="line">            To_mat_K = zeros((len(important_K), 4))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        index = 0</span><br><span class="line">        for line in important_K:</span><br><span class="line">            x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">            To_mat_K[index:] = x[0:4]</span><br><span class="line">            index += 1</span><br><span class="line">    #print(To_mat_K)</span><br><span class="line">    # 把提取到的占据态的信息To_mat_K储存在2.txt</span><br><span class="line">        To_mat1 = zeros((len(filelist_new1), 3))</span><br><span class="line">        print(len(To_mat1))</span><br><span class="line">        index = 0</span><br><span class="line">        for line in filelist_new1:</span><br><span class="line">            x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">            To_mat1[index:] = x[0:3]</span><br><span class="line">            index += 1</span><br><span class="line">    # print(To_mat)</span><br><span class="line"></span><br><span class="line">        steps = np.linspace(1, 419, 419)</span><br><span class="line">        x = 15 * 0.048375 * steps</span><br><span class="line">        y = 6*To_mat1[:,1]</span><br><span class="line">        np.savetxt(&quot;C:\\Users\\14618\\Desktop\\occ-k.txt&quot;, To_mat_K, delimiter=&#x27;  &#x27;, header=&#x27;整理&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CM1_raw=To_mat_K[:, 2]</span><br><span class="line">CM2_raw=To_mat_K[:, 3]</span><br><span class="line">CM1=CM1_raw[1:]</span><br><span class="line">CM2=CM2_raw[1:]</span><br><span class="line"></span><br><span class="line">print(&#x27;CM1&#x27;,CM1)</span><br><span class="line">#求平均</span><br><span class="line">CM1_sum = []</span><br><span class="line">CM1_avg = []</span><br><span class="line">CM2_sum = []</span><br><span class="line">CM2_avg = []</span><br><span class="line"></span><br><span class="line">for i in range(0,len(CM1)+1):</span><br><span class="line">    CM1_sum.append(np.sum(CM1[:i + 1]))</span><br><span class="line">    CM2_sum.append(np.sum(CM2[:i + 1]))</span><br><span class="line"></span><br><span class="line">print(&#x27;CM1_sum&#x27;,CM1_sum)</span><br><span class="line">print(&#x27;CM2_sum&#x27;,CM2_sum)</span><br><span class="line"></span><br><span class="line">step=np.linspace(1,420,420)</span><br><span class="line"></span><br><span class="line">CM1_avg = np.divide(CM1_sum,step)</span><br><span class="line">CM2_avg = np.divide(CM2_sum,step)</span><br><span class="line"></span><br><span class="line">print(&#x27;CM1_avg&#x27;,CM1_avg)</span><br><span class="line">print(&#x27;CM2_avg&#x27;,CM2_avg)</span><br><span class="line">#去掉列表里的第一个数</span><br><span class="line">print(&#x27;len&#x27;,len(CM1_avg))</span><br><span class="line"></span><br><span class="line">x=15*0.048378*step</span><br><span class="line">#</span><br><span class="line"># #拟合</span><br><span class="line">def func1(x, a, b, c):</span><br><span class="line">    return a * np.exp(-b * x) + c</span><br><span class="line">def func2(x, a, b, c):</span><br><span class="line">    return -a * np.exp(-b * x) + c</span><br><span class="line">sigma=np.ones(len(x))</span><br><span class="line">sigma[[0]]=0.01 #设置第一个点的权重，让其通过</span><br><span class="line"></span><br><span class="line">popt_CM1, pcov_CM1 = curve_fit(func1,x,CM1_avg,sigma=sigma)</span><br><span class="line">popt_CM2, pcov_CM2 = curve_fit(func2,x,CM2_avg,sigma=sigma)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # 画图</span><br><span class="line">figure = plt.figure()</span><br><span class="line"></span><br><span class="line">    #plt.plot(x, To_mat_K[:, 0], &#x27;b-&#x27;, label=&#x27;VM1&#x27;)</span><br><span class="line">    #plt.plot(x, To_mat_K[:, 1], &#x27;r-&#x27;, label=&#x27;VM2&#x27;)</span><br><span class="line">plt.plot(x,CM2_avg, &#x27;r-&#x27;, label=&#x27;CM1&#x27;)</span><br><span class="line">plt.plot(x,CM1_avg, &#x27;b-&#x27;, label=&#x27;CM2&#x27;) #出现能级交叉，因此这里更改了Label</span><br><span class="line"></span><br><span class="line">plt.plot(x, func2(x, *popt_CM2), &#x27;r--&#x27;,</span><br><span class="line">label=&#x27;fit: a=-%5.3f, b=%5.3f, c=%5.3f&#x27; % tuple(popt_CM2))</span><br><span class="line">plt.plot(x, func1(x, *popt_CM1), &#x27;b--&#x27;,</span><br><span class="line">label=&#x27;fit: a=%5.3f, b=%5.3f, c=%5.3f&#x27; % tuple(popt_CM1))</span><br><span class="line">plt.plot(x,y[1:]-y[0],&#x27;g--&#x27;,lw=0.5)</span><br><span class="line">#plt.plot(x, 0.2 * sin(0.051699 * x), &#x27;g--&#x27;, lw=1)</span><br><span class="line">plt.xlabel(&#x27;Time(fs)&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Occupations&#x27;)</span><br><span class="line">plt.title(&#x27;Occupations-Time&#x27;)</span><br><span class="line">plt.xlim([0, 300])</span><br><span class="line">plt.legend(loc=1)</span><br><span class="line">plt.axhline(y=0, ls=&#x27;--&#x27;, lw=0.2, c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=121.53398, ls=&#x27;--&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=243.06796, ls=&#x27;--&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=60.76699, ls=&#x27;--&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line">plt.axvline(x=182.30097, ls=&#x27;--&#x27;, lw=0.5, c=&#x27;#808080&#x27;)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br><span class="line">figure.savefig(fname=&quot;C:\\Users\\14618\\Desktop\\figure.jpg&quot;, dpi=500)</span><br><span class="line"></span><br><span class="line">f.close()</span><br><span class="line">f1.close()</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-画三维的分子运动-MD-图，也包含二维的"><a href="#5-画三维的分子运动-MD-图，也包含二维的" class="headerlink" title="5.画三维的分子运动(MD)图，也包含二维的"></a>5.画三维的分子运动(MD)图，也包含二维的</h1><h2 id="用法：将MoS2-scf-MD-CAR粘贴到MD-txt文件里"><a href="#用法：将MoS2-scf-MD-CAR粘贴到MD-txt文件里" class="headerlink" title="用法：将MoS2_scf.MD_CAR粘贴到MD.txt文件里"></a>用法：将<code>MoS2_scf.MD_CAR</code>粘贴到MD.txt文件里</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br></pre></td><td class="code"><pre><span class="line"># -*-coding=utf-8-*-</span><br><span class="line"># Usage:处理位置坐标</span><br><span class="line">from numpy import *</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from mpl_toolkits.mplot3d import Axes3D</span><br><span class="line">with open(&quot;C:\\Users\\14618\\Desktop\\MD-1.txt&quot;, &#x27;r&#x27;, encoding=&#x27;UTF-8&#x27;)as f0:</span><br><span class="line">   with open(&quot;C:\\Users\\14618\\Desktop\\MD.txt&quot;, &#x27;r&#x27;, encoding=&#x27;UTF-8&#x27;)as f:</span><br><span class="line">       filelist0 = f0.readlines()</span><br><span class="line">       filelist_new0 = np.array(filelist0)  # 转换成 array类型</span><br><span class="line">       num_array0 = filelist_new0.size  # 整个文件fx的行数</span><br><span class="line">       lattice_vector0 = filelist0[2:5]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       filelist = f.readlines()</span><br><span class="line">       filelist_new = np.array(filelist)  # 转换成 array类型</span><br><span class="line">       num_array = filelist_new.size  # 整个文件fx的行数</span><br><span class="line">       lattice_vector=filelist[2:5]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   # for i in</span><br><span class="line">   lattice_vector_matrix0 = zeros((3, 3))</span><br><span class="line">   index = 0</span><br><span class="line">   for line in lattice_vector0:</span><br><span class="line">       x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">       lattice_vector_matrix0[index:] = x[0:3]</span><br><span class="line">       index += 1</span><br><span class="line">   # print(&quot;晶矢为：&quot;,lattice_vector_matrix)</span><br><span class="line">   a0 = lattice_vector_matrix0[0, :]</span><br><span class="line">   b0 = lattice_vector_matrix0[1, :]</span><br><span class="line">   c0 = lattice_vector_matrix0[2, :]</span><br><span class="line"></span><br><span class="line">   Mo_position0 = []</span><br><span class="line">   S1_position0 = []</span><br><span class="line">   S2_position0 = []</span><br><span class="line">   for i in range(420):  # 420步</span><br><span class="line">       Mo_position0.append(filelist_new0[10 * i + 7])</span><br><span class="line">       S1_position0.append(filelist_new0[10 * i + 8])</span><br><span class="line">       S2_position0.append(filelist_new0[10 * i + 9])</span><br><span class="line">   # Mo_position存储的是Mo原子位置的改变</span><br><span class="line">   # print(len(Mo_position))</span><br><span class="line">   Mo_position_matrix0 = zeros((len(Mo_position0), 3))</span><br><span class="line">   index = 0</span><br><span class="line">   for line in Mo_position0:</span><br><span class="line">       x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">       Mo_position_matrix0[index:] = x[0:3]</span><br><span class="line">       index += 1</span><br><span class="line"></span><br><span class="line">   S1_position_matrix0 = zeros((len(S1_position0), 3))</span><br><span class="line">   index = 0</span><br><span class="line">   for line in S1_position0:</span><br><span class="line">       x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">       S1_position_matrix0[index:] = x[0:3]</span><br><span class="line">       index += 1</span><br><span class="line"></span><br><span class="line">   S2_position_matrix0 = zeros((len(S2_position0), 3))</span><br><span class="line">   index = 0</span><br><span class="line">   for line in S2_position0:</span><br><span class="line">       x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">       S2_position_matrix0[index:] = x[0:3]</span><br><span class="line">       index += 1</span><br><span class="line"></span><br><span class="line">   # print(S2_position_matrix[0][0])</span><br><span class="line">   # 针对Mo原子</span><br><span class="line">   Mo_position_matrix_x0 = Mo_position_matrix0[:, 0]</span><br><span class="line">   Mo_position_matrix_y0 = Mo_position_matrix0[:, 1]</span><br><span class="line">   Mo_position_matrix_z0 = Mo_position_matrix0[:, 2]</span><br><span class="line"></span><br><span class="line">   # 针对S1原子</span><br><span class="line">   S1_position_matrix_x0 = S1_position_matrix0[:, 0]</span><br><span class="line">   S1_position_matrix_y0 = S1_position_matrix0[:, 1]</span><br><span class="line">   S1_position_matrix_z0 = S1_position_matrix0[:, 2]</span><br><span class="line"></span><br><span class="line">   # 针对S2原子</span><br><span class="line">   S2_position_matrix_x0 = S2_position_matrix0[:, 0]</span><br><span class="line">   S2_position_matrix_y0 = S2_position_matrix0[:, 1]</span><br><span class="line">   S2_position_matrix_z0 = S2_position_matrix0[:, 2]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">lattice_vector_matrix = zeros((3, 3))</span><br><span class="line">index = 0</span><br><span class="line">for line in lattice_vector:</span><br><span class="line">    x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">    lattice_vector_matrix[index:] = x[0:3]</span><br><span class="line">    index += 1</span><br><span class="line">#print(&quot;晶矢为：&quot;,lattice_vector_matrix)</span><br><span class="line">a=lattice_vector_matrix[0,:]</span><br><span class="line">b=lattice_vector_matrix[1,:]</span><br><span class="line">c=lattice_vector_matrix[2,:]</span><br><span class="line"></span><br><span class="line">Mo_position=[]</span><br><span class="line">S1_position=[]</span><br><span class="line">S2_position=[]</span><br><span class="line">for i in range(420): #420步</span><br><span class="line">    Mo_position.append(filelist_new[10*i+7])</span><br><span class="line">    S1_position.append(filelist_new[10*i+8])</span><br><span class="line">    S2_position.append(filelist_new[10*i+9])</span><br><span class="line">#Mo_position存储的是Mo原子位置的改变</span><br><span class="line">#print(len(Mo_position))</span><br><span class="line">Mo_position_matrix = zeros((len(Mo_position), 3))</span><br><span class="line">index = 0</span><br><span class="line">for line in Mo_position:</span><br><span class="line">    x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">    Mo_position_matrix[index:] = x[0:3]</span><br><span class="line">    index += 1</span><br><span class="line"></span><br><span class="line">S1_position_matrix = zeros((len(S1_position), 3))</span><br><span class="line">index = 0</span><br><span class="line">for line in S1_position:</span><br><span class="line">    x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">    S1_position_matrix[index:] = x[0:3]</span><br><span class="line">    index += 1</span><br><span class="line"></span><br><span class="line">S2_position_matrix = zeros((len(S2_position), 3))</span><br><span class="line">index = 0</span><br><span class="line">for line in S2_position:</span><br><span class="line">    x = line.strip(&#x27;\n&#x27;).split()</span><br><span class="line">    S2_position_matrix[index:] = x[0:3]</span><br><span class="line">    index += 1</span><br><span class="line"></span><br><span class="line">#print(S2_position_matrix[0][0])</span><br><span class="line">#针对Mo原子</span><br><span class="line">Mo_position_matrix_x=Mo_position_matrix[:,0]</span><br><span class="line">Mo_position_matrix_y=Mo_position_matrix[:,1]</span><br><span class="line">Mo_position_matrix_z=Mo_position_matrix[:,2]</span><br><span class="line"></span><br><span class="line">#针对S1原子</span><br><span class="line">S1_position_matrix_x=S1_position_matrix[:,0]</span><br><span class="line">S1_position_matrix_y=S1_position_matrix[:,1]</span><br><span class="line">S1_position_matrix_z=S1_position_matrix[:,2]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#针对S2原子</span><br><span class="line">S2_position_matrix_x=S2_position_matrix[:,0]</span><br><span class="line">S2_position_matrix_y=S2_position_matrix[:,1]</span><br><span class="line">S2_position_matrix_z=S2_position_matrix[:,2]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#画图</span><br><span class="line">fig = plt.figure()</span><br><span class="line">#ax = Axes3D(fig)</span><br><span class="line">#ax.scatter(Mo_position_matrix_x, Mo_position_matrix_y, Mo_position_matrix_z)</span><br><span class="line">#ax.scatter(S1_position_matrix_x, S1_position_matrix_y, S1_position_matrix_z)</span><br><span class="line">#ax.scatter(S2_position_matrix_x, S2_position_matrix_y, S2_position_matrix_z)</span><br><span class="line">plt.plot(S2_position_matrix_x,S2_position_matrix_y,&#x27;r--&#x27;,label=&#x27;With Excitation of Electrons&#x27;)</span><br><span class="line">plt.plot(S2_position_matrix_x0,S2_position_matrix_y0,&#x27;b--&#x27;,label=&#x27;Without Excitation of Electrons&#x27;)</span><br><span class="line">plt.xlabel(&#x27;x direction&#x27;)</span><br><span class="line">plt.ylabel(&#x27;y direction&#x27;)</span><br><span class="line">plt.title(&#x27;The movement of Phonons in Plane x-y &#x27;)</span><br><span class="line">plt.legend()</span><br><span class="line"># 添加坐标轴(顺序是Z, Y, X)</span><br><span class="line"># ax.set_zlabel(&#x27;Z&#x27;, fontdict=&#123;&#x27;size&#x27;: 15, &#x27;color&#x27;: &#x27;red&#x27;&#125;)</span><br><span class="line"># ax.set_ylabel(&#x27;Y&#x27;, fontdict=&#123;&#x27;size&#x27;: 15, &#x27;color&#x27;: &#x27;red&#x27;&#125;)</span><br><span class="line"># ax.set_xlabel(&#x27;X&#x27;, fontdict=&#123;&#x27;size&#x27;: 15, &#x27;color&#x27;: &#x27;red&#x27;&#125;)</span><br><span class="line">plt.show()</span><br><span class="line">fig.savefig(fname=&quot;C:\\Users\\14618\\Desktop\\figure.jpg&quot;, dpi=500)</span><br><span class="line">f.close()</span><br><span class="line">f0.close()</span><br></pre></td></tr></table></figure>
+
+      </div>
+      <div class="post-tags-categories">
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>NaWu</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2021/12/30/后处理脚本/" target="_blank" title="MoS2后处理脚本-计算磁矩">http://example.com/2021/12/30/后处理脚本/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/medias/13.jpg" class="lazyload placeholder" data-srcset="/medias/13.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+    </div>
+    <a href="/2021/12/30/python%E7%94%BB%E5%9B%BE%E7%9A%84%E6%8A%80%E5%B7%A7/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">Python画图技巧</div>
+      </div>
+      
+      <!-- <div class="content">
+        一.legend的设置@https://www.cnblogs.com/shanger/p/13021463.html
+
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/medias/14.jpg" class="lazyload placeholder" data-srcset="/medias/14.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="/2021/12/30/%E5%B8%B8%E8%A7%81%E6%94%B6%E6%95%9B%E9%97%AE%E9%A2%98/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">收敛常出现的问题汇总2</div>
+      </div>
+      <!-- <div class="content">
+        收敛问题在电子自洽计算和结构弛豫过程中，pw.x有时迭代到最大步数或者报错退出，这主要是因为计算不收敛，即12End o
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="/medias/zfb.jpg" class="lazyload placeholder" data-srcset="/medias/zfb.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="/medias/wx.jpg" class="lazyload placeholder" data-srcset="/medias/wx.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>catalog</span>
+        
+          <div class="toc-open-close">catalog</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:1461857377@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/nawu97" class="social">
+                  
+                    <i class="fas fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1461857377" class="social">
+                  
+                    <i class="fas fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/yuang01">yuang01</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>Total visits：<span id="busuanzi_value_site_pv"></span> times
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>Number of visitors：<span id="busuanzi_value_site_uv"></span> people
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="/js/fancybox/jquery.fancybox.min.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style> 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const headerMenuTransparent = true;
+    if (!headerMenuTransparent) { return; }
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css">
+  <script src="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>
