@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Phonons:Coherent phonons and chiral phonons | NaWu</title>
+  <title>Markdown使用手册 | NaWu</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -408,14 +408,14 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/medias/30.jpg')">
+  background-position: center center;position: relative;background-image:url('/medias/26.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        Phonons:Coherent phonons and chiral phonons
+        Markdown使用手册
       </span>
     </div>
     
@@ -446,21 +446,94 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="Phonons"><a href="#Phonons" class="headerlink" title="Phonons"></a>Phonons</h1><p>参考文章：<br>@<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23004818/answer/650858488">https://www.zhihu.com/question/23004818/answer/650858488</a><br>@<a target="_blank" rel="noopener" href="https://github.com/llfrog/Bazinga">https://github.com/llfrog/Bazinga</a><br>[TOC] </p>
-<h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><p><a target="_blank" rel="noopener" href="https://vdn3.vzuu.com/SD/78f5e97a-23a9-11eb-b4fa-6a5b5cfc591d.mp4?disable_local_cache=1&auth_key=1641458483-0-0-b145de760ef81fe0c41dc549342d1d09&f=mp4&bu=pico&expiration=1641458483&v=tx">Phonon</a></p>
-<ul>
-<li>与光子类似，晶格振动的能量是量子化的，这种能量量子化称为声子（Phonon）</li>
-<li>声子用来描述凝聚态物质原子或分子振动的<strong>集体激发</strong>的准粒子</li>
-<li>推导：<br>设晶体的原胞数为$N$，原子质量为$M$，晶体中第$l$个原胞中原子的平衡位置由<br>  对于晶格振动</li>
+        <h1 id="Markdown使用手册"><a href="#Markdown使用手册" class="headerlink" title="Markdown使用手册"></a>Markdown使用手册</h1><p>参考说明：<br>@<a target="_blank" rel="noopener" href="https://blog.csdn.net/ArthurCaoMH/article/details/89300713">https://blog.csdn.net/ArthurCaoMH/article/details/89300713</a><br>@<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158156773">https://zhuanlan.zhihu.com/p/158156773</a><br>[TOC]</p>
+<h2 id="1-文本的书写"><a href="#1-文本的书写" class="headerlink" title="1.文本的书写"></a>1.文本的书写</h2><h3 id="1-1-斜体和粗体，删除线"><a href="#1-1-斜体和粗体，删除线" class="headerlink" title="1.1 斜体和粗体，删除线"></a>1.1 斜体和粗体，删除线</h3><ul>
+<li>使用 * 和 ** 表示斜体和粗体</li>
+<li>使用 ~~ 表示删除线<h3 id="1-2-分级标题"><a href="#1-2-分级标题" class="headerlink" title="1.2 分级标题"></a>1.2 分级标题</h3></li>
+<li>使用 === 表示一级标题，使用 — 表示二级标题<br>例如<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">一级标题</span><br><span class="line">===</span><br></pre></td></tr></table></figure>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1>也可以选择在行首加井号表示不同级别的标题 (H1-H6)，例如：# H1, ## H2, ### H3，#### H4。<h3 id="1-3-常用-Emoji-amp-Font-Awesome"><a href="#1-3-常用-Emoji-amp-Font-Awesome" class="headerlink" title="1.3 常用 Emoji &amp; Font-Awesome"></a>1.3 常用 Emoji &amp; Font-Awesome</h3>常用表情库<br>@<a target="_blank" rel="noopener" href="https://emojipedia.org/">https://emojipedia.org/</a><h3 id="1-4-引用和注脚"><a href="#1-4-引用和注脚" class="headerlink" title="1.4 引用和注脚"></a>1.4 引用和注脚</h3></li>
 </ul>
-<h2 id="Choerent-phonons"><a href="#Choerent-phonons" class="headerlink" title="Choerent phonons"></a>Choerent phonons</h2><h2 id="Chiral-phonons"><a href="#Chiral-phonons" class="headerlink" title="Chiral phonons"></a>Chiral phonons</h2>
+<p>使用 [^keyword] 表示注脚</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 上标：30^th^</span><br><span class="line">- 下标：H~2~O</span><br><span class="line">- 脚注：Content [^1]</span><br><span class="line">[^1]:Hi 这里是一个注脚，会自动拉到最后面排版</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<ul>
+<li>上标：30^th^</li>
+<li>下标：H<del>2</del>O</li>
+<li>脚注：Content [^1]<br>[^1]:Hi 这里是一个注脚，会自动拉到最后面排版</li>
+</ul>
+<h3 id="1-5文字引用"><a href="#1-5文字引用" class="headerlink" title="1.5文字引用"></a>1.5文字引用</h3><p>使用 &gt; 表示文字引用<br><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;白日依山尽</span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong></p>
+<blockquote>
+<p>白日依山尽</p>
+</blockquote>
+<h2 id="2-插入"><a href="#2-插入" class="headerlink" title="2.插入"></a>2.插入</h2><h3 id="2-1-插入图片"><a href="#2-1-插入图片" class="headerlink" title="2.1 插入图片"></a>2.1 插入图片</h3><p>在段落中插入图片链接，使用 <img src="%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80" class="lazyload placeholder" data-srcset="%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="描述"> 插入图像</p>
+<h3 id="2-2-插入链接"><a href="#2-2-插入链接" class="headerlink" title="2.2 插入链接"></a>2.2 插入链接</h3><p>在段落中插入链接<br><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Name](链接)</span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23004818/answer/650858488">Phonons</a></p>
+<h3 id="2-3-插入目录"><a href="#2-3-插入目录" class="headerlink" title="2.3 插入目录"></a>2.3 插入目录</h3><p>在段落中填写 [TOC] 以显示全文内容的目录结构。<br><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[TOC]</span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong><br>[TOC]</p>
+<h3 id="2-4-插入代码"><a href="#2-4-插入代码" class="headerlink" title="2.4 插入代码"></a>2.4 插入代码</h3><h4 id="2-4-1-行内代码"><a href="#2-4-1-行内代码" class="headerlink" title="2.4.1 行内代码"></a>2.4.1 行内代码</h4><p><strong>格式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用`代码`表示</span><br></pre></td></tr></table></figure>
+<p><strong>结果：</strong><br><code>代码</code></p>
+<h4 id="2-4-2-行间代码"><a href="#2-4-2-行间代码" class="headerlink" title="2.4.2 行间代码"></a>2.4.2 行间代码</h4><p><strong>格式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用</span><br></pre></td></tr></table></figure>
+<p>代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">**结果：**</span><br></pre></td></tr></table></figure>
+<p>代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 3.布局</span><br><span class="line">### 3.1 列表</span><br><span class="line">#### 3.1.1 有序列表</span><br><span class="line">使用数字和点表示有序列表</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 3.1.2 无序列表</span><br><span class="line">使用 *，+，- 表示无序列表</span><br><span class="line">**格式：**</span><br></pre></td></tr></table></figure>
+<ul>
+<li>无序列表项 一</li>
+<li>无序列表项 二</li>
+<li>无序列表项 三<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">**结果：**</span><br><span class="line"></span><br><span class="line">- 无序列表项 一</span><br><span class="line">- 无序列表项 二</span><br><span class="line">- 无序列表项 三</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 3.2 表格</span><br><span class="line">**格式：**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th align="right">价格</th>
+<th align="center">数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>计算机</td>
+<td align="right">$1600</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td>手机</td>
+<td align="right">$12</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td>管线</td>
+<td align="right">$1</td>
+<td align="center">234</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td align="right">ce</td>
+<td align="center">ce</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**结果：**</span><br><span class="line">![Table](https://upload-images.jianshu.io/upload_images/1414656-be89f4007982b608.png?imageMogr2/auto-orient/strip|imageView2/2/w/637/format/webp？)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 3.3 待办事宜</span><br><span class="line">使用带有 [ ] 或 [x] （未完成或已完成）项的列表语法撰写一个待办事宜列表，并且支持子列表嵌套以及混用Markdown语法</span><br><span class="line">**格式：**</span><br></pre></td></tr></table></figure></li>
+<li>[] <strong>博一上的计划</strong><ul>
+<li>[] 完成FGT计算dipole</li>
+<li><input checked="" disabled="" type="checkbox"> 完成FGT计算手性声子<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">**结果：**</span><br><span class="line">- [] **博一上的计划**</span><br><span class="line">    - [] 完成FGT计算dipole</span><br><span class="line">    - [x] 完成FGT计算手性声子</span><br><span class="line"></span><br><span class="line">## 4.数学</span><br><span class="line">- $表示行内公式，如：</span><br></pre></td></tr></table></figure>
+$F=ma$<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    即$F=ma$</span><br><span class="line">- $$表示行间公式，如：</span><br></pre></td></tr></table></figure>
+$$\sum_{i=1}^n a_i=0$$<br>```<br>即：$$\sum_{i=1}^n a_i=0$$</li>
+</ul>
+</li>
+<li>常用计算速查:<br>  <img src="https://upload-images.jianshu.io/upload_images/1414656-ae9c09b333973914.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" class="lazyload placeholder" data-srcset="https://upload-images.jianshu.io/upload_images/1414656-ae9c09b333973914.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="Usage1"><br>  <img src="https://upload-images.jianshu.io/upload_images/1414656-7c2ddbdd99c408c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" class="lazyload placeholder" data-srcset="https://upload-images.jianshu.io/upload_images/1414656-7c2ddbdd99c408c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="Usage2"><br>  <img src="https://upload-images.jianshu.io/upload_images/1414656-0d5474e78da63206.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" class="lazyload placeholder" data-srcset="https://upload-images.jianshu.io/upload_images/1414656-0d5474e78da63206.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="Usage3"></li>
+</ul>
+
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/study/" class="">
-              study
+            <a href="/tags/others/" class="">
+              others
             </a>
           
         </div>
@@ -474,7 +547,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2022/01/06/Phonons的一些思考/" target="_blank" title="Phonons:Coherent phonons and chiral phonons">http://example.com/2022/01/06/Phonons的一些思考/</a>
+    <a href="/2022/01/06/Markdown使用说明/" target="_blank" title="Markdown使用手册">http://example.com/2022/01/06/Markdown使用说明/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -492,40 +565,21 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/26.jpg" class="lazyload placeholder" data-srcset="/medias/26.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-    </div>
-    <a href="/2022/01/06/Markdown%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">Markdown使用手册</div>
-      </div>
-      
-      <!-- <div class="content">
-        Markdown使用手册参考说明：@https://blog.csdn.net/ArthurCaoMH/article/
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/15.jpg" class="lazyload placeholder" data-srcset="/medias/15.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="/medias/30.jpg" class="lazyload placeholder" data-srcset="/medias/30.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
     </div>
-    <a href="/2022/01/06/pyramid%E8%AF%B4%E6%98%8E%E4%B9%A6/" class="post-nav-link">
+    <a href="/2022/01/06/Phonons%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">pyramids 使用说明书</div>
+        <div class="title-text">Phonons:Coherent phonons and chiral phonons</div>
       </div>
       <!-- <div class="content">
-        
-  0ee51dd8011192f2c4ae3fecf81729b9c3fc4ae7f7b7775e7636e134a
+        Phonons参考文章：@https://www.zhihu.com/question/23004818/answer/
       </div> -->
     </a>
   </div>
